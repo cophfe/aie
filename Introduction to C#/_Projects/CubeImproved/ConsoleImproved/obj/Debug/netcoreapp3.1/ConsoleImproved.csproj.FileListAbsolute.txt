@@ -1,0 +1,39 @@
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.exe
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.deps.json
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.runtimeconfig.json
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.runtimeconfig.dev.json
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.dll
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.pdb
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.csprojAssemblyReference.cache
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.AssemblyInfoInputs.cache
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.AssemblyInfo.cs
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.csproj.CoreCompileInputs.cache
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.dll
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.pdb
+C:\Users\cphfe\source\repos\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.genruntimeconfig.cache
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.exe
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.deps.json
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.runtimeconfig.json
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.runtimeconfig.dev.json
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.dll
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.pdb
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.csprojAssemblyReference.cache
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.AssemblyInfoInputs.cache
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.AssemblyInfo.cs
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.csproj.CoreCompileInputs.cache
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.dll
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.pdb
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\ConsoleImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.genruntimeconfig.cache
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.exe
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.deps.json
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.runtimeconfig.json
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.runtimeconfig.dev.json
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.dll
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\bin\Debug\netcoreapp3.1\ConsoleImproved.pdb
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.csprojAssemblyReference.cache
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.AssemblyInfoInputs.cache
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.AssemblyInfo.cs
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.csproj.CoreCompileInputs.cache
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.dll
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.pdb
+C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\_Projects\CubeImproved\ConsoleImproved\obj\Debug\netcoreapp3.1\ConsoleImproved.genruntimeconfig.cache

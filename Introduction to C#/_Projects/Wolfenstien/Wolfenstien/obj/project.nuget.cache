@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "pCAVTw6RgAE50DW8DmfyUO3tRemmEgeJ2OLHB41m2YwUw5tiJxP4B2sRlTpvr/KDLFIWKdB9z5Lj7tg9qwQoFA==",
+  "success": true,
+  "projectFilePath": "E:\\AIE Files\\Introduction to C#\\_Projects\\Wolfenstien\\Wolfenstien\\Wolfenstien.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cphfe\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\cphfe\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\cphfe\\.nuget\\packages\\system.drawing.common\\5.0.1\\system.drawing.common.5.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

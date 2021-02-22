@@ -1,0 +1,4 @@
+C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\_Testing\gif\gif\bin\Debug\netcoreapp3.1\gif.exe
+C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\_Testing\gif\gif\obj\Debug\netcoreapp3.1\gif.csprojAssemblyReference.cache
+C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\_Testing\gif\gif\obj\Debug\netcoreapp3.1\gif.AssemblyInfoInputs.cache
+C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\_Testing\gif\gif\obj\Debug\netcoreapp3.1\gif.AssemblyInfo.cs
