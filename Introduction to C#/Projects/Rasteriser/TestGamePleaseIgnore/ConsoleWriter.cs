@@ -65,7 +65,7 @@ class ConsoleWriter
     }
 
     [STAThread]
-    public static void Render(ConsoleColor[,] clr, int height, int width, int scale)
+    public static void Render(ConsoleColor[,] clr)
     {
         Console.WindowHeight = Console.LargestWindowHeight;
         Console.WindowWidth = Console.LargestWindowWidth;
@@ -88,7 +88,7 @@ class ConsoleWriter
                     buf[x + y*sWidth].Attributes = (short)(attribute | ((int)clr[i, y] << 4));
                     buf[x + y * sWidth].Char.AsciiChar = (byte)(character);
                     buf[x +1+ y * sWidth].Attributes = (short)(attribute | ((int)clr[i, y] << 4));
-                    buf[x + y * sWidth].Char.AsciiChar = (byte)(character);
+                    buf[x +1+ y * sWidth].Char.AsciiChar = (byte)(character);
                     x += 2;
                 }
                 i = 0;

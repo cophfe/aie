@@ -16,16 +16,15 @@ static class Selector
         while (selecting)
         {
 
-            ConsoleKey key = Console.ReadKey().Key;
+            ConsoleKey key = Console.ReadKey(true).Key;
             if (selected != 0 && key == ConsoleKey.LeftArrow)
             {
-                Console.Clear();
+                
                 selected--;
                 PrintAnswers(answers);
             }
             else if (selected != answers.Length - 1 && key == ConsoleKey.RightArrow)
             {
-                Console.Clear();
                 selected++;
                 PrintAnswers(answers);
             

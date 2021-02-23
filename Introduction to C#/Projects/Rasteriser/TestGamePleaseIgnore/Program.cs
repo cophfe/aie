@@ -13,7 +13,7 @@ class Program
 	{
 		
 		Console.CursorVisible = false;
-		int _scaleAmt = 1;
+		float scaleAmount = 1f;
 		bool working = true, happy = true, autoScale = true;
 		while (working)
 		{
@@ -27,7 +27,6 @@ class Program
 			Console.SetCursorPosition(0, 0);
 			happy = true;
 			autoScale = true;
-			bool scaling = true;
 			//source bitmap image
 			Bitmap _bmp;
 			string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + @"\Images\");
@@ -48,49 +47,46 @@ class Program
 			}
 		while (happy)
 			{
-				scaling = true;
+				
 				Console.SetCursorPosition(0, 0);
 				ConsoleHelper.SetCurrentFont("NSimSun", 5);
 				
 				Console.SetCursorPosition(0, 0);
 				//Console.Write(new string(' ', 40));
 				int x, y;
-				while (scaling)
+				if (_bmp.Height / (scaleAmount) < Console.LargestWindowHeight)
 				{
-					if (_bmp.Height / (_scaleAmt + 1) < Console.LargestWindowHeight)
-					{
-						Console.WindowHeight = _bmp.Height / (_scaleAmt + 1);
-						scaling = false;
-					}
-					else if (autoScale)
-					{
-						_scaleAmt++;
-					}
-					else
-					{
-						Console.WindowHeight = Console.LargestWindowHeight;
-						scaling = false;
-					}
-					if (_bmp.Width * 2 / (_scaleAmt + 1) +10< Console.LargestWindowWidth-10)
-					{
-						Console.WindowWidth = _bmp.Width * 2 / (_scaleAmt + 1) + 10;
-						scaling = false;
-					}
-					else if (autoScale)
-					{
-						_scaleAmt++;
-					}
-					else
-					{
-						Console.WindowWidth = Console.LargestWindowWidth;
-						scaling = false;
-					}
+					Console.WindowHeight = (int)(_bmp.Height / scaleAmount);
 				}
+				else if (autoScale)
+				{
+					scaleAmount++;
+				}
+				else
+				{
+					Console.WindowHeight = Console.LargestWindowHeight;
+				}
+				if (_bmp.Width * 2 / scaleAmount + 10< Console.LargestWindowWidth-10)
+				{
+					Console.WindowWidth = (int)(_bmp.Width * 2 / scaleAmount);
+				}
+				else if (autoScale)
+				{
+					scaleAmount++;
+				}
+				else
+				{
+					Console.WindowWidth = Console.LargestWindowWidth;
+				}
+				
 				Console.SetCursorPosition(0, 0);
 
-				int w = _bmp.Width;// -_scaleAmt;
-				int h = _bmp.Height;// -_scaleAmt;
-				ConsoleColor[,] _img = new ConsoleColor[w,h]; ;
+				int w = _bmp.Width;
+				int h = _bmp.Height;
+				int stepX;
+				int stepY;
+				//how much to step per pixel of bitmap
+				ConsoleColor[,] img = new ConsoleColor[w,h]; ;
 				
 				for (y = 0; y < h; y++)
 				{
@@ -98,18 +94,15 @@ class Program
 					{
 						
 						Color _pC = _bmp.GetPixel(x, y);
-						_img[x , y] = GetClosestConsoleColour(_pC);
-						_img[x, y] = GetClosestConsoleColour(_pC);
-						//Console.BackgroundColor = GetClosestConsoleColour(_pC);
-						//Console.Write("  ");
-						//x += _scaleAmt;
+						img[x , y] = GetClosestConsoleColour(_pC);
+						img[x, y] = GetClosestConsoleColour(_pC);
 						
 					}
 					Console.Write('\n');
 					//y += _scaleAmt;
 					
 				}
-				ConsoleWriter.Render(_img, w, h, _scaleAmt);
+				ConsoleWriter.Render(img);
 				Console.BackgroundColor = 0;
 				ConsoleKey key = Console.ReadKey(true).Key;
 				switch (key)
@@ -119,14 +112,14 @@ class Program
 						Console.Clear();
 						break;
 					case ConsoleKey.RightArrow:
-						if (_scaleAmt != 0)
-							_scaleAmt--;
+						if (scaleAmount != 0)
+							scaleAmount--;
 						autoScale = false;
 						Console.Clear();
 						break;
 					case ConsoleKey.LeftArrow:
-						
-							_scaleAmt++;
+
+						scaleAmount++;
 						autoScale = false;
 						Console.Clear();
 						break;
