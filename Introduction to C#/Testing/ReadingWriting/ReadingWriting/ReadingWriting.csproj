@@ -51,6 +51,7 @@
     <Compile Include="ConsoleMouse.cs" />
     <Compile Include="Cursor.cs" />
     <Compile Include="Disposer.cs" />
+    <Compile Include="InputRecorder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -30,43 +30,58 @@ namespace ReadingWriting
 		[FieldOffset(0)]
 		public byte AsciiChar;
 	}
-	[StructLayout(LayoutKind.Sequential)]
+	[StructLayout(LayoutKind.Explicit, CharSet = CharSet.Unicode)]
 	public struct KeyEventRecord
 	{
+		[FieldOffset(0), MarshalAs(UnmanagedType.Bool)]
 		public bool bKeyDown;
+		[FieldOffset(4), MarshalAs(UnmanagedType.U2)]
 		public ushort wRepeatCount;
+		[FieldOffset(6), MarshalAs(UnmanagedType.U2)]
 		public ushort wVirtualKeyCode;
+		[FieldOffset(8), MarshalAs(UnmanagedType.U2)]
 		public ushort wVirtualScanCode;
-		public CharUnion charUnion; 
+		[FieldOffset(10)]
+		public char UnicodeChar;
+		[FieldOffset(12), MarshalAs(UnmanagedType.U4)]
 		public uint dwControlKeyState;
 	}
 	[StructLayout(LayoutKind.Sequential)]
 	public struct FocusEventRecord
 	{
-		public bool bSetFocus;
+		public uint bSetFocus;
 	}
 	[StructLayout(LayoutKind.Sequential)]
 	public struct WindowBufferSizeEventRecord
 	{
 		public Coord dwSize;
+
+		public WindowBufferSizeEventRecord(short x, short y)
+		{
+			dwSize = new Coord(x, y);
+		}
 	}
 	[StructLayout(LayoutKind.Sequential)]
 	public struct MenuEventRecord
 	{
 		public uint dwCommandId;
 	}
-	[StructLayout(LayoutKind.Sequential)]
+	[StructLayout(LayoutKind.Explicit)]
 	public struct MouseEventRecord
 	{
+		[FieldOffset(0)]
 		public Coord dwMousePosition;
+		[FieldOffset(4)]
 		public uint dwButtonState;
+		[FieldOffset(8)]
 		public uint dwControlKeyState;
+		[FieldOffset(12)]
 		public uint dwEventFlags;
 	}
 	//[StructLayout(LayoutKind.Explicit)]
 	//public struct InputUnion
 	//{
-		
+
 	//}
 
 	[StructLayout(LayoutKind.Explicit)]
@@ -127,6 +142,9 @@ namespace ReadingWriting
 		static extern bool GetCursorPos(
 			out Point lpPoint
 			);
+		[DllImport("user32.dll")]
+		static extern bool SetCursorPos(int X, int Y);
+
 		[StructLayout(LayoutKind.Sequential)]
 		public struct Point
 		{
@@ -152,20 +170,25 @@ namespace ReadingWriting
 			//Console.WriteLine(i);
 			//Console.ReadKey();
 			Point p;
-			
+			Console.CursorVisible = false;
 			
 			//Console.ReadLine();
 			while (true)
 			{
-				iR[0] = new InputRecord();
+				//need to disable quickedit mode automatically
+				//iR[0] = new InputRecord();
 				Console.SetCursorPosition(0, 0);
-				ReadConsoleInput(h, out iR, (uint)(iR.Length-1), out i);
+				//ReadConsoleInput(h, out iR, (uint)(iR.Length-1), out i);
 				//if(iR != null)
 				//{
 				//	Console.WriteLine(iR[0].input.keyEvent.charUnion.UnicodeChar);
 				//}
+				Point pt = new Point();
+				GetCursorPos(out pt);
 
-
+				//if ()
+				//SetCursorPos(100, 100);
+				
 				//coord = new Vector2(iR[0].input.mouseEvent.dwMousePosition.X, iR[0].input.mouseEvent.dwMousePosition.X);
 				//Console.WriteLine($"{coord.X},{coord.Y}");
 

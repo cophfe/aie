@@ -25,6 +25,13 @@ namespace ReadingWriting
 			//}
 			////either use "using" or ".Dispose()" to avoid memory leaks
 			////writer.Dispose();
+			///
+			while (true)
+			{
+				InputRecorder.RestrictMouseToWindow();
+				InputRecorder.MouseInput();
+			}
+			
 			ConsoleMouse.Read();
 		}
 
