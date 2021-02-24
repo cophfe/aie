@@ -9,3 +9,16 @@ C:\Users\s210575\Documents\2021\Introduction to C#\Testing\WorkingThing\WorkingT
 C:\Users\s210575\Documents\2021\Introduction to C#\Testing\WorkingThing\WorkingThing\obj\Debug\netcoreapp3.1\WorkingThing.dll
 C:\Users\s210575\Documents\2021\Introduction to C#\Testing\WorkingThing\WorkingThing\obj\Debug\netcoreapp3.1\WorkingThing.pdb
 C:\Users\s210575\Documents\2021\Introduction to C#\Testing\WorkingThing\WorkingThing\obj\Debug\netcoreapp3.1\WorkingThing.csprojAssemblyReference.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\bin\Debug\netcoreapp3.1\WorkingThing.exe
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\bin\Debug\netcoreapp3.1\WorkingThing.deps.json
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\bin\Debug\netcoreapp3.1\WorkingThing.runtimeconfig.json
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\bin\Debug\netcoreapp3.1\WorkingThing.runtimeconfig.dev.json
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\bin\Debug\netcoreapp3.1\WorkingThing.dll
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\bin\Debug\netcoreapp3.1\WorkingThing.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\obj\Debug\netcoreapp3.1\WorkingThing.csprojAssemblyReference.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\obj\Debug\netcoreapp3.1\WorkingThing.AssemblyInfoInputs.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\obj\Debug\netcoreapp3.1\WorkingThing.AssemblyInfo.cs
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\obj\Debug\netcoreapp3.1\WorkingThing.csproj.CoreCompileInputs.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\obj\Debug\netcoreapp3.1\WorkingThing.dll
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\obj\Debug\netcoreapp3.1\WorkingThing.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Testing\WorkingThing\WorkingThing\obj\Debug\netcoreapp3.1\WorkingThing.genruntimeconfig.cache

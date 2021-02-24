@@ -35,16 +35,14 @@ namespace Wolfenstien
 
         // This Attribute tells the runtime to load this !unmanaged! DLL
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        static extern SafeFileHandle CreateFile( //<< this method has the same signiture as an unmanaged function
-        // extern tells runtime this is an external method
+        static extern SafeFileHandle CreateFile( 
         string FileName,
-        [MarshalAs(UnmanagedType.U4)] uint fileAccess, // this Marshal basically substitutes uint, which is managed, with an unmanaged variable
+        [MarshalAs(UnmanagedType.U4)] uint fileAccess,
         [MarshalAs(UnmanagedType.U4)] uint fileShare,
         IntPtr securityAttributes,
         [MarshalAs(UnmanagedType.U4)] FileMode creationDisposition,
         [MarshalAs(UnmanagedType.U4)] int flags,
         IntPtr template);
-        //can get any errors through Marshal.GetLastWin32Error() 
 
 
         //Obviously this external method writes console output, including c o l o u r

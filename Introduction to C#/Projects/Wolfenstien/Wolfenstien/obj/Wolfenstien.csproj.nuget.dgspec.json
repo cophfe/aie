@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\s210575\\Documents\\2021\\Introduction to C#\\Projects\\Wolfenstien\\Wolfenstien\\Wolfenstien.csproj": {}
+    "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Wolfenstien\\Wolfenstien\\Wolfenstien.csproj": {}
   },
   "projects": {
-    "C:\\Users\\s210575\\Documents\\2021\\Introduction to C#\\Projects\\Wolfenstien\\Wolfenstien\\Wolfenstien.csproj": {
+    "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Wolfenstien\\Wolfenstien\\Wolfenstien.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\s210575\\Documents\\2021\\Introduction to C#\\Projects\\Wolfenstien\\Wolfenstien\\Wolfenstien.csproj",
+        "projectUniqueName": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Wolfenstien\\Wolfenstien\\Wolfenstien.csproj",
         "projectName": "Wolfenstien",
-        "projectPath": "C:\\Users\\s210575\\Documents\\2021\\Introduction to C#\\Projects\\Wolfenstien\\Wolfenstien\\Wolfenstien.csproj",
-        "packagesPath": "C:\\Users\\s210575\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\s210575\\Documents\\2021\\Introduction to C#\\Projects\\Wolfenstien\\Wolfenstien\\obj\\",
+        "projectPath": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Wolfenstien\\Wolfenstien\\Wolfenstien.csproj",
+        "packagesPath": "C:\\Users\\cphfe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Wolfenstien\\Wolfenstien\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\s210575\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cphfe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,10 +22,12 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.nuget.org/packages/Vector/": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +39,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "System.Drawing.Common": {
               "target": "Package",
@@ -58,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
