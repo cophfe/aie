@@ -12,6 +12,14 @@ namespace ReadingWriting
 {
 	class InputRecorder
 	{
+		static Point lastMouse, currentMouse;
+		const float mouseSpeed = 1;
+
+		public InputRecorder()
+		{
+			//SetCursorPos(960, 540);
+			GetCursorPos(out lastMouse);
+		}
 		//Gets the cursor position in screen pixels
 		[DllImport("user32.dll")]
 		static extern bool GetCursorPos(
@@ -28,6 +36,12 @@ namespace ReadingWriting
 		{
 			public int X;
 			public int Y;
+
+			public Point(int x, int y)
+			{
+				X = x;
+				Y = y;
+			}
 		}
 
 		[StructLayout(LayoutKind.Sequential)]
@@ -55,35 +69,34 @@ namespace ReadingWriting
 		[DllImport("dwmapi.dll")]
 		static extern int DwmGetWindowAttribute(IntPtr hWnd, int dwAttribute, out Rect lpRect, int cbAttribute);
 
-		public static void MouseInput()
+		[DllImport("user32.dll")]
+		public static extern int ShowCursor(bool bShow);
+
+		[DllImport("user32.dll")]
+		public static extern int SetCursor(bool bShow, uint dword);
+
+		public void MouseInput()
 		{
+			Console.CursorVisible = true;
 			Rect screenBounds;
-			Point pt = new Point();
-			Console.CursorVisible = false;
-			int x = 0, y = 0;
 			GetWindowRect(GetConsoleWindow(), out screenBounds);
-			float consoleResX = screenBounds.Right - screenBounds.Left, consoleResY = screenBounds.Bottom - screenBounds.Top;
-			GetWindowRect(GetConsoleWindow(), out screenBounds);
-			GetCursorPos(out pt);
-			x = pt.X;
-			y = pt.Y;
 
-			int consoleWidth = Console.WindowWidth, consoleHeight = Console.WindowHeight;
-			float normalizedX = (pt.X - screenBounds.Left) / consoleResX, normalizedY = (float)((pt.Y - screenBounds.Top) / consoleResY);
-			//Console.WriteLine(normalizedX + ", " + normalizedY + ", " + x + ", " + y) ;
-			if (normalizedX > 0 && normalizedX < 1 && normalizedY > 0 && normalizedY < 1)
-			{
+			GetCursorPos(out currentMouse);
+			//SetCursorPos(960, 540);
+			Point deltaMouse = new Point(currentMouse.X - lastMouse.X, currentMouse.Y - lastMouse.Y);
+			//Console.WriteLine($"x: {deltaMouse.X}\ny: {deltaMouse.Y}");
+			lastMouse = currentMouse;
 
-				Console.SetCursorPosition((int)(normalizedX * consoleWidth), (int)(normalizedY * consoleHeight));
-				Console.Write('X');
-			}
-			System.Threading.Thread.Sleep(10);
-			
-
+			Random rand = new Random();
+			Console.SetCursorPosition(Math.Max(Math.Min(Console.CursorLeft + (int)(deltaMouse.X/mouseSpeed), Console.WindowWidth-1),0), Math.Max(Math.Min(Console.CursorTop + (int)(deltaMouse.Y/mouseSpeed/2), Console.WindowHeight-1), 0));
+			//System.Threading.Thread.Sleep(10);
+			Console.Write((char)rand.Next(0,120));
+			//Console.SetCursorPosition(Console.CursorLeft-1,Console.CursorTop);
 
 		}
 
-		public static void RestrictMouseToWindow()
+		
+		public void RestrictMouseToWindow()
 		{
 			Rect screenBounds;
 			Point pt = new Point();
@@ -97,6 +110,7 @@ namespace ReadingWriting
 
 			// might need to look into DwmGetWindowAttribute if this is inaccurate
 			Console.CursorVisible = false;
+			
 			
 
 			if (pt.X < screenBounds.Left)

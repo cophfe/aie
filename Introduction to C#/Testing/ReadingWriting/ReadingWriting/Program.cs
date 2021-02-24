@@ -14,6 +14,7 @@ namespace ReadingWriting
 		//delegate void d();
 		static void Main(string[] args)
 		{
+			//Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
 			////d dd = new d();
 			////dd += MoveCursor;
 			//Cursor c = new Cursor();
@@ -26,12 +27,15 @@ namespace ReadingWriting
 			////either use "using" or ".Dispose()" to avoid memory leaks
 			////writer.Dispose();
 			///
-			while (true)
+			//InputRecorder iR = new InputRecorder();
+			//InputRecorder.ShowCursor(false);
+			//while (true)
 			{
-				InputRecorder.RestrictMouseToWindow();
-				InputRecorder.MouseInput();
+				//iR.RestrictMouseToWindow();
+				//iR.MouseInput();
+				ConsoleMouse.Read();
 			}
-			
+			InputRecorder.ShowCursor(true);
 			ConsoleMouse.Read();
 		}
 
