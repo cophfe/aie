@@ -14,6 +14,8 @@ namespace ReadingWriting
 		//delegate void d();
 		static void Main(string[] args)
 		{
+			Canvas.RenderUI();
+			Console.ReadKey(true);
 			//Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
 			////d dd = new d();
 			////dd += MoveCursor;

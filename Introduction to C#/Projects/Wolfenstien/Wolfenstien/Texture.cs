@@ -47,7 +47,7 @@ namespace Wolfenstien
 			Color.Magenta,					//Magenta
 			Color.Yellow,					//Yellow
 			Color.White						//White
-		};
+			};
 			
 			float[] distance = new float[cCs.Length];
 			for (int x = 0; x < cCs.Length; x++)

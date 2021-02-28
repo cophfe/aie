@@ -101,7 +101,7 @@ namespace Wolfenstien
         [STAThread]
         public static void Render(ConsoleColor[,] clr, int startX = 0, int startY = 0)
         {
-            
+            h = CreateFile("CONOUT$", 0x40000000, 2, IntPtr.Zero, FileMode.Open, 0, IntPtr.Zero);
             short sHeight = (short)clr.GetLength(1);
             short sWidth = (short)clr.GetLength(0);
             CharInfo[] buf = new CharInfo[clr.Length];

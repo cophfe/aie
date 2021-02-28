@@ -1,0 +1,13 @@
+C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\BubbleSort\BubbleSort\bin\Debug\BubbleSort.exe.config
+C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\BubbleSort\BubbleSort\bin\Debug\BubbleSort.exe
+C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\BubbleSort\BubbleSort\bin\Debug\BubbleSort.pdb
+C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\BubbleSort\BubbleSort\obj\Debug\BubbleSort.csprojAssemblyReference.cache
+C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\BubbleSort\BubbleSort\obj\Debug\BubbleSort.exe
+C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\BubbleSort\BubbleSort\obj\Debug\BubbleSort.pdb
+C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 1\BubbleSort\BubbleSort\bin\Debug\BubbleSort.exe.config
+C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 1\BubbleSort\BubbleSort\bin\Debug\BubbleSort.exe
+C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 1\BubbleSort\BubbleSort\bin\Debug\BubbleSort.pdb
+C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 1\BubbleSort\BubbleSort\obj\Debug\BubbleSort.csprojAssemblyReference.cache
+C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 1\BubbleSort\BubbleSort\obj\Debug\BubbleSort.csproj.CoreCompileInputs.cache
+C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 1\BubbleSort\BubbleSort\obj\Debug\BubbleSort.exe
+C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 1\BubbleSort\BubbleSort\obj\Debug\BubbleSort.pdb
