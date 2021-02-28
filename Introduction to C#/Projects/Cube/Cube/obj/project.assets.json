@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cphfe\\Desktop\\AIE Files\\Introduction to C#\\_Projects\\Cube\\Cube\\Cube.csproj",
+      "projectUniqueName": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Cube\\Cube\\Cube.csproj",
       "projectName": "Cube",
-      "projectPath": "C:\\Users\\cphfe\\Desktop\\AIE Files\\Introduction to C#\\_Projects\\Cube\\Cube\\Cube.csproj",
+      "projectPath": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Cube\\Cube\\Cube.csproj",
       "packagesPath": "C:\\Users\\cphfe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cphfe\\Desktop\\AIE Files\\Introduction to C#\\_Projects\\Cube\\Cube\\obj\\",
+      "outputPath": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Cube\\Cube\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\cphfe\\AppData\\Roaming\\NuGet\\NuGet.Config",

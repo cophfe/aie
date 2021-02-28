@@ -286,6 +286,7 @@ class ConsoleControl
 				}
 			}
 
+			Console.ForegroundColor = ConsoleColor.White;
 			Console.BackgroundColor = ConsoleColor.Black;
 			Console.Clear();
 			SetCurrentFont("Consolas", 35);
@@ -350,6 +351,7 @@ class ConsoleControl
 	static bool AreYouSure(string actionWord, char character)
 	{
 		Console.BackgroundColor = ConsoleColor.Black;
+		Console.ForegroundColor = ConsoleColor.White;
 		Console.Clear();
 		SetCurrentFont("Consolas", 35);
 		SetFullscreen();

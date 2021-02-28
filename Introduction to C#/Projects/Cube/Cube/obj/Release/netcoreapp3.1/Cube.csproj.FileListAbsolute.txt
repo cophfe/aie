@@ -1,0 +1,13 @@
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\bin\Release\netcoreapp3.1\Cube.exe
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\bin\Release\netcoreapp3.1\Cube.deps.json
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\bin\Release\netcoreapp3.1\Cube.runtimeconfig.json
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\bin\Release\netcoreapp3.1\Cube.runtimeconfig.dev.json
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\bin\Release\netcoreapp3.1\Cube.dll
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\bin\Release\netcoreapp3.1\Cube.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\obj\Release\netcoreapp3.1\Cube.csprojAssemblyReference.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\obj\Release\netcoreapp3.1\Cube.AssemblyInfoInputs.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\obj\Release\netcoreapp3.1\Cube.AssemblyInfo.cs
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\obj\Release\netcoreapp3.1\Cube.csproj.CoreCompileInputs.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\obj\Release\netcoreapp3.1\Cube.dll
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\obj\Release\netcoreapp3.1\Cube.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Cube\Cube\obj\Release\netcoreapp3.1\Cube.genruntimeconfig.cache

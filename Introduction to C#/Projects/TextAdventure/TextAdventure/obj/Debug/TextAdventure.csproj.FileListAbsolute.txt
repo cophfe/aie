@@ -17,3 +17,10 @@ C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\TextAdventure\TextAdventure\
 C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\TextAdventure\TextAdventure\obj\Debug\TextAdventure.csproj.CoreCompileInputs.cache
 C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\TextAdventure\TextAdventure\obj\Debug\TextAdventure.exe
 C:\Users\cphfe\Desktop\AIE Files\Introduction to C#\TextAdventure\TextAdventure\obj\Debug\TextAdventure.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\TextAdventure\TextAdventure\bin\Debug\TextAdventure.exe.config
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\TextAdventure\TextAdventure\bin\Debug\TextAdventure.exe
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\TextAdventure\TextAdventure\bin\Debug\TextAdventure.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\TextAdventure\TextAdventure\obj\Debug\TextAdventure.csprojAssemblyReference.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\TextAdventure\TextAdventure\obj\Debug\TextAdventure.csproj.CoreCompileInputs.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\TextAdventure\TextAdventure\obj\Debug\TextAdventure.exe
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\TextAdventure\TextAdventure\obj\Debug\TextAdventure.pdb

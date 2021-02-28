@@ -8,3 +8,14 @@ C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\Circle\Circle\obj\Rel
 C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\Circle\Circle\obj\Release\Circle.csproj.CopyComplete
 C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\Circle\Circle\obj\Release\Circle.exe
 C:\Users\s210575\Documents\CoPHFe Files\Introduction to C#\Circle\Circle\obj\Release\Circle.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\bin\Release\Circle.exe.config
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\bin\Release\Circle.exe
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\bin\Release\Circle.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\bin\Release\Antlr3.Runtime.dll
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\bin\Release\NCalc.dll
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\bin\Release\Antlr3.Runtime.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\obj\Release\Circle.csprojAssemblyReference.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\obj\Release\Circle.csproj.CoreCompileInputs.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\obj\Release\Circle.csproj.CopyComplete
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\obj\Release\Circle.exe
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\GraphCalc\Circle\obj\Release\Circle.pdb

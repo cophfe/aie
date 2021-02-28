@@ -1,0 +1,12 @@
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\bin\Release\netcoreapp3.1\ConsoleImproved.exe
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\bin\Release\netcoreapp3.1\ConsoleImproved.deps.json
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\bin\Release\netcoreapp3.1\ConsoleImproved.runtimeconfig.json
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\bin\Release\netcoreapp3.1\ConsoleImproved.runtimeconfig.dev.json
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\bin\Release\netcoreapp3.1\ConsoleImproved.dll
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\bin\Release\netcoreapp3.1\ConsoleImproved.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\obj\Release\netcoreapp3.1\ConsoleImproved.AssemblyInfoInputs.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\obj\Release\netcoreapp3.1\ConsoleImproved.AssemblyInfo.cs
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\obj\Release\netcoreapp3.1\ConsoleImproved.csproj.CoreCompileInputs.cache
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\obj\Release\netcoreapp3.1\ConsoleImproved.dll
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\obj\Release\netcoreapp3.1\ConsoleImproved.pdb
+C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\CubeImproved\ConsoleImproved\obj\Release\netcoreapp3.1\ConsoleImproved.genruntimeconfig.cache

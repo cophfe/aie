@@ -28,10 +28,10 @@ namespace ConsoleImproved
                 Console.Clear();
                 Console.CursorVisible = false;
                 {
-                    int height = Console.LargestWindowHeight - 10;
+                    int height = Console.LargestWindowHeight - 20;
                     int width = height * 2 * planeWidth / planeHeight;
                     if (width < Console.LargestWindowHeight)
-                        Console.WindowWidth = width;
+                        Console.WindowWidth = width; // works on release build, not on debug
                     else
                         width = Console.LargestWindowWidth;//wont render properly but whatever lol                    
                     Console.WindowHeight = height;

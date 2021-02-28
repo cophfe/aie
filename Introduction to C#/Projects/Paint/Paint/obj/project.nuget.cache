@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CARKySstboajwOI1uUjg7hBpIq7TGk0xbJHS4dTGi46VAJipk9sKgoN9X6s6aFh8KEsa9fp3o1mVqidB/7bE/A==",
+  "dgSpecHash": "kBdiQtsebHekmLygi5q6TI94MMTG5rLi8vpi24SEJkNMB6tsnNPu+MOZECBQ1jSaJNlgOAsqL0ky4K0LmlAPsQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Testing\\Paint\\Paint\\Paint.csproj",
+  "projectFilePath": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Paint\\Paint\\Paint.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cphfe\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\cphfe\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cphfe\\Desktop\\AIE Files\\Introduction to C#\\_Projects\\CubeImproved\\ConsoleImproved\\ConsoleImproved.csproj": {}
+    "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\CubeImproved\\ConsoleImproved\\ConsoleImproved.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cphfe\\Desktop\\AIE Files\\Introduction to C#\\_Projects\\CubeImproved\\ConsoleImproved\\ConsoleImproved.csproj": {
+    "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\CubeImproved\\ConsoleImproved\\ConsoleImproved.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cphfe\\Desktop\\AIE Files\\Introduction to C#\\_Projects\\CubeImproved\\ConsoleImproved\\ConsoleImproved.csproj",
+        "projectUniqueName": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\CubeImproved\\ConsoleImproved\\ConsoleImproved.csproj",
         "projectName": "ConsoleImproved",
-        "projectPath": "C:\\Users\\cphfe\\Desktop\\AIE Files\\Introduction to C#\\_Projects\\CubeImproved\\ConsoleImproved\\ConsoleImproved.csproj",
+        "projectPath": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\CubeImproved\\ConsoleImproved\\ConsoleImproved.csproj",
         "packagesPath": "C:\\Users\\cphfe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cphfe\\Desktop\\AIE Files\\Introduction to C#\\_Projects\\CubeImproved\\ConsoleImproved\\obj\\",
+        "outputPath": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\CubeImproved\\ConsoleImproved\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cphfe\\AppData\\Roaming\\NuGet\\NuGet.Config",
