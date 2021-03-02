@@ -24,7 +24,8 @@ class ConsoleRender
         SmallRect rect = new SmallRect() { Left = (short)startX, Top = (short)startY, Right = (short)(startX + sWidth), Bottom = (short)(sHeight + startY) };
         short attribute = 2; // colour of foreground from 0 to 15
         Random rand = new Random();
-        byte character = (byte)' ';
+        byte character = (byte)' '; 
+        
 
         int i = 0;
         for (int y = 0; y < sHeight; y++)

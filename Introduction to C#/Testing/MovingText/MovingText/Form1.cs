@@ -28,20 +28,19 @@ namespace MovingText
 
 		public void Update(object sender, EventArgs e)
 		{
-			if (dragButton)
-			{
-				
-				button1.Location = new Point(-this.Location.X + MousePosition.X, -this.Location.Y + MousePosition.Y);
-			}
+			
 			Refresh();
 		}
 
 		Random rand = new Random();
-		List<StringInfo> characters = new List<StringInfo>(30);
+		List<CharInfo> characters = new List<CharInfo>(30);
 		Brush b = Brushes.Black;
 		Font f = new Font(FontFamily.GenericMonospace, 10f, FontStyle.Regular);
 		Graphics g;
 		const int outOfBoundsLimit = 50;
+		Vector2 acceleration = new Vector2(0,-10);
+		const float speedMultiplier = 5;
+		const float angularSpeedMultiplier = 5;
 
 		private void Form1_Paint(object sender, PaintEventArgs e)
 		{
@@ -58,36 +57,42 @@ namespace MovingText
 					{
 						characters[i].position += characters[i].velocity;
 						characters[i].startAngle += characters[i].angularVelocity;
-						DrawText(f, b, g, characters[i].s, characters[i].startAngle, characters[i].position);
+						DrawText(f, b, g, characters[i].character, characters[i].startAngle, characters[i].position);
+						characters[i].velocity.Y += 0.1f;
+					}
+					else
+					{
+						characters[i] = null;
 					}
 				}
 
-			DrawText(f, b, g, "Hello", 50.5f, new Vector2(200,200));
 
 		}
 
-		class StringInfo
+		class CharInfo
 		{
 			public Vector2 velocity;
-			public string s;
+			public char character;
 			public Vector2 position;
 			public float startAngle;
 			public float angularVelocity;
+			public Vector2 acceleration;
 
-			public StringInfo(Vector2 velocity, string s, Vector2 position, float angle, float angularVelocity)
+			public CharInfo(Vector2 velocity, char character, Vector2 position, float angle, float angularVelocity)
 			{
 				this.velocity = velocity;
-				this.s = s;
+				this.character = character;
 				this.position = position;
 				this.startAngle = angle;
 				this.angularVelocity = angularVelocity;
 			}
 		}
 
-		void DrawText(Font font, Brush brush, Graphics g, string text, float angle, Vector2 position)
+		void DrawText(Font font, Brush brush, Graphics g, char character, float angle, Vector2 position)
 		{
+			string str = $"{character}";
 			g.PageUnit = GraphicsUnit.Pixel;
-			SizeF stringSize = g.MeasureString(text, font);
+			SizeF stringSize = g.MeasureString(str, font);
 			
 			Rectangle rotated_bounds = new Rectangle(
 				-(int)stringSize.Width/2, -(int)stringSize.Height/2, (int)stringSize.Width, (int)stringSize.Height);
@@ -99,39 +104,22 @@ namespace MovingText
 			// Translate to move the rectangle to the correct position.
 			g.TranslateTransform((int)(position.X + stringSize.Width), (int)(position.Y +stringSize.Height),
 				MatrixOrder.Append);
-
 			// Draw the text.
-			g.DrawString(text, font, brush, rotated_bounds);
+			g.DrawString(str, font, brush, rotated_bounds);
 		}
 
-		const float speedMultiplier = 5;
-		const float angularSpeedMultiplier = 5;
+		
 		private void button1_Click(object sender, EventArgs e)
 		{
 			Vector2 pos = new Vector2(button1.Location.X + button1.Width/3, button1.Location.Y - button1.Height/2);
 			float angle = (float)(rand.NextDouble() * 60);
 			for (int i = 0; i < 20; i++)
 			{
-				characters.Add(new StringInfo(new Vector2(((float)rand.NextDouble() - rand.Next(0, 2) )* speedMultiplier , ((float)rand.NextDouble() - rand.Next(0, 2)) * speedMultiplier), ((char)rand.Next(60,80)).ToString(), pos, angle, (float)rand.NextDouble()*angularSpeedMultiplier));
+				characters.Add(new CharInfo(new Vector2(((float)rand.NextDouble() - rand.Next(0, 2) )* speedMultiplier , ((float)rand.NextDouble() - rand.Next(0, 2)) * speedMultiplier), (char)rand.Next(60,80), pos, angle, (float)rand.NextDouble()*angularSpeedMultiplier));
 			}
 		}
 
-		bool dragButton = false;
 
-		private void button1_MouseDown(object sender, MouseEventArgs e)
-		{
-			dragButton = true;
-		}
-
-		private void button1_MouseUp(object sender, MouseEventArgs e)
-		{
-			dragButton = false;
-		}
-
-		private void button1_MouseMove(object sender, MouseEventArgs e)
-		{
-			
-		}
 
 		private void Form1_MouseMove(object sender, MouseEventArgs e)
 		{

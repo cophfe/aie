@@ -31,22 +31,22 @@ namespace Wolfenstien
 
 			Color[] cCs =
 			{
-			Color.Black,						//Black
-			Color.FromArgb(255,0,0,255),		//Dark Blue
-			Color.FromArgb(255,0,128,0),		//Dark Green
-			Color.FromArgb(255,0,128,128),		//Dark Cyan
-			Color.FromArgb(255,128,0,0),		//Dark Red
-			Color.FromArgb(255,128,0,128),		//Dark Magenta
-			Color.FromArgb(255,128,128,0),		//Dark Yellow
-			Color.FromArgb(255,192,192,192),	//Grey
-			Color.FromArgb(255,128,128,128),	//Dark Grey
-			Color.LightBlue,					//Blue
-			Color.Green,						//Green
-			Color.Cyan,							//Cyan
-			Color.Red,							//Red
-			Color.Magenta,						//Magenta
-			Color.Yellow,						//Yellow
-			Color.White							//White
+				Color.Black,						//Black
+				Color.FromArgb(255,0,0,255),		//Dark Blue
+				Color.FromArgb(255,0,128,0),		//Dark Green
+				Color.FromArgb(255,0,128,128),		//Dark Cyan
+				Color.FromArgb(255,128,0,0),		//Dark Red
+				Color.FromArgb(255,128,0,128),		//Dark Magenta
+				Color.FromArgb(255,128,128,0),		//Dark Yellow
+				Color.FromArgb(255,192,192,192),	//Grey
+				Color.FromArgb(255,128,128,128),	//Dark Grey
+				Color.LightBlue,					//Blue
+				Color.Green,						//Green
+				Color.Cyan,							//Cyan
+				Color.Red,							//Red
+				Color.Magenta,						//Magenta
+				Color.Yellow,						//Yellow
+				Color.White							//White
 			};
 			
 			float[] distance = new float[cCs.Length];
