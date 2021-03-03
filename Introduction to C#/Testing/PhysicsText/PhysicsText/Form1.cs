@@ -16,41 +16,44 @@ namespace PhysicsText
 	public partial class MainForm : Form
 	{
 
+		Run run;
+
 		public MainForm()
 		{
 			InitializeComponent();
-			CharRenderObject cRO = CharRenderObject.CreateCharObject(0, new Vector2(50, 50), Vector2.One, new Size(40, 40), 1, 4, 1, 10, 1);
+			characterSize = CharRenderObject.FindMonospaceCharSizeFromFont(font, CreateGraphics());
+			run = new Run();
+			run.width = Width;
+			run.height = Height;
+			run.isSimulating = false;
+			run.Start();
 
-			cRO.character = 'A';
-			allObjects.Add(cRO);
+			RenderTimer_Tick(null,null);
 		}
 
-		List<CharRenderObject> allObjects = new List<CharRenderObject>();
-		Stopwatch stopwatch = new Stopwatch();
-		const float outOfBoundsLimit = 50;
-		Brush brushes = Brushes.Black;
-		Font font = new Font(FontFamily.GenericMonospace, 10f, FontStyle.Regular);
 
-		public void Loop()
-		{
-			//while (true)
-			//{
-			//	IterateAllObjects();
-			//	Refresh();
-			//}
-		}
+		
 
 		private void Form1_Paint(object sender, PaintEventArgs e)
 		{
-			DrawAllObjects(e.Graphics);
+			if (run.allObjects.Count > 0)
+				DrawAllObjects(e.Graphics, run.allObjects);
 		}
 
-		void DrawAllObjects(Graphics graphics)
+		
+		Brush brushes = Brushes.Black;
+		Font font = new Font(FontFamily.GenericMonospace, 10f, FontStyle.Regular);
+		SizeF characterSize;
+		
+		void DrawAllObjects(Graphics graphics, List<CharRenderObject> allObjects)
 		{
 			graphics.PageUnit = GraphicsUnit.Pixel;
-			foreach (CharRenderObject obj in allObjects)
+			run.isCleaning = false;
+			for (int i = 0; i < allObjects.Count; i++)
 			{
-				string str = $"{obj.character}";
+				if (allObjects[i] == null)
+					continue;
+				string str = $"{allObjects[i].character}";
 				SizeF stringSize = graphics.MeasureString(str, font);
 
 				Rectangle rotated_bounds = new Rectangle(
@@ -58,35 +61,42 @@ namespace PhysicsText
 
 				// Rotate.
 				graphics.ResetTransform();
-				graphics.RotateTransform(obj.rotation);
+				graphics.RotateTransform(allObjects[i].rotation);
 
 				// Translate to move the rectangle to the correct position.
-				graphics.TranslateTransform((int)(obj.position.X + stringSize.Width), (int)(obj.position.Y + stringSize.Height),
+				graphics.TranslateTransform((int)(allObjects[i].position.X + stringSize.Width), (int)(allObjects[i].position.Y + stringSize.Height),
 					MatrixOrder.Append);
+
 				// Draw the text.
 				graphics.DrawString(str, font, brushes, rotated_bounds);
 			}
+			run.isCleaning = true;
 		}
 
-		void IterateAllObjects()
+		private void RenderTimer_Tick(object sender, EventArgs e)
 		{
-			stopwatch.Stop();
-			long deltaTime = stopwatch.ElapsedTicks;
-			stopwatch.Start();
-			foreach(CharRenderObject obj in allObjects)
+			Invalidate();
+		}
+
+		private void MainForm_Load(object sender, EventArgs e)
+		{
+			run.isSimulating = true;
+		}
+
+		Random rand = new Random();
+		const float speedMultiplier = 200, angularSpeedMultiplier = 2;
+		private void button1_MouseClick(object sender, MouseEventArgs e)
+		{
+			
+			Vector2 pos = new Vector2(button1.Location.X + button1.Width / 3, button1.Location.Y - button1.Height / 2);
+			float angle = (float)(rand.NextDouble() * 60);
+			run.isCleaning = false; //CRASHES WITHOUT THIS!!!! (run uses allObjects too so changing its length while run it is in a for loop creates an error)
+			for (int i = 0; i < 20; i++)
 			{
-				obj.Iterate(deltaTime);
-				if (obj.position.X > -outOfBoundsLimit && obj.position.X < Width + outOfBoundsLimit && obj.position.Y > -outOfBoundsLimit && obj.position.Y < Height + outOfBoundsLimit)
-				{
-					allObjects.Remove(obj);
-				}
-			}
-		}
+				run.scheduledToAdd.Add(CharRenderObject.CreateCharObject((char)rand.Next(60, 80), angle, pos, Vector2.One, characterSize, 1, (float)rand.NextDouble() * angularSpeedMultiplier, new Vector2(((float)rand.NextDouble() - rand.Next(0, 2)) * speedMultiplier, ((float)rand.NextDouble() - rand.Next(0, 2)) * speedMultiplier),  1, run.defaultGravity, 1));
 
-		private void PhysicsTimer_Tick(object sender, EventArgs e)
-		{
-			IterateAllObjects();
-			Refresh();
+			}
+			run.isCleaning = true;
 		}
 	}
 }

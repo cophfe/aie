@@ -38,7 +38,7 @@ namespace PhysicsText
 			return graphics.MeasureString("X", font);
 		}
 
-		public static CharRenderObject CreateCharObject(float startRotation, Vector2 startPosition, Vector2 scale, SizeF collisionBoxSize, float angularDrag, float angularVelocity, float drag, float gravityScale, float inertia)
+		public static CharRenderObject CreateCharObject(char character, float startRotation, Vector2 startPosition, Vector2 scale, SizeF collisionBoxSize, float angularDrag, float angularVelocity, Vector2 velocity, float drag, float gravityScale, float inertia)
 		{
 			CharRenderObject cRO = new CharRenderObject();
 			cRO.isSimulated = true;
@@ -48,10 +48,11 @@ namespace PhysicsText
 			cRO.gravityScale = gravityScale;
 			cRO.inertia = inertia;
 			cRO.position = startPosition;
+			cRO.velocity = velocity;
 			cRO.rotation = startRotation;
 			cRO.scale = scale;
 			cRO.size = collisionBoxSize;
-			cRO.velocity = new Vector2(0, 0);
+			cRO.character = character;
 			return cRO;
 		}
 	}

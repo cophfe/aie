@@ -20,7 +20,8 @@ namespace PhysicsText
 			Application.SetCompatibleTextRenderingDefault(false);
 			MainForm form = new MainForm();
 			Application.Run(form);
-			new Task(form.Loop, TaskCreationOptions.LongRunning);
+			
+			
 		}
 
 

@@ -63,35 +63,21 @@ namespace PhysicsText
 		public float mass = 1;
 		
 
-		private Vector2 dragForce;
-		private Vector2 force;
+		private Vector2 dragForce = new Vector2(0,0);
+		private Vector2 force = new Vector2(0,0);
 		public void Iterate(float deltaTime)
 		{
-			dragForce = Vector2.Normalize(-velocity) * velocity.LengthSquared() * drag;
-			force = new Vector2(dragForce.X, dragForce.Y + mass *-gravityScale);
+			//dragForce = velocity * velocity.Length() * drag;
+			force.X = -dragForce.X;
+			force.Y = -(-dragForce.Y + mass *-gravityScale);
 			velocity += force * deltaTime/mass;
-
+			rotation %= 360;
 			rotation += angularVelocity * deltaTime;
-			position += velocity * deltaTime;
+			position.X += velocity.X * deltaTime;
+			position.Y += velocity.Y * deltaTime;
 
 		}
 
-		public static PhysicsObject Create(float startRotation, Vector2 startPosition, Vector2 scale, SizeF collisionBoxSize, float angularDrag, float angularVelocity, float drag, float gravityScale, float inertia)
-		{
-			PhysicsObject pO = new PhysicsObject();
-			pO.isSimulated = true;
-			pO.angularDrag = angularDrag;
-			pO.angularVelocity = angularVelocity;
-			pO.drag = drag;
-			pO.gravityScale = gravityScale;
-			pO.inertia = inertia;
-			pO.position = startPosition;
-			pO.rotation = startRotation;
-			pO.scale = scale;
-			pO.size = collisionBoxSize;
-			pO.velocity = new Vector2(0,0);
-			return pO;
-		}
 		
 	}
 }
