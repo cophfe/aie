@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cphfe\\source\\repos\\Physics\\Physics\\Physics.csproj",
+      "projectUniqueName": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Physics\\Physics\\Physics.csproj",
       "projectName": "Physics",
-      "projectPath": "C:\\Users\\cphfe\\source\\repos\\Physics\\Physics\\Physics.csproj",
+      "projectPath": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Physics\\Physics\\Physics.csproj",
       "packagesPath": "C:\\Users\\cphfe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cphfe\\source\\repos\\Physics\\Physics\\obj\\",
+      "outputPath": "C:\\Users\\cphfe\\Desktop\\Work\\aie\\Introduction to C#\\Projects\\Physics\\Physics\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\cphfe\\AppData\\Roaming\\NuGet\\NuGet.Config",
