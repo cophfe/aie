@@ -1,0 +1,15 @@
+C:\Users\cphfe\source\repos\Physics\Physics\obj\Debug\netcoreapp3.1\Physics.csprojAssemblyReference.cache
+C:\Users\cphfe\source\repos\Physics\Physics\obj\Debug\netcoreapp3.1\Physics.Form1.resources
+C:\Users\cphfe\source\repos\Physics\Physics\obj\Debug\netcoreapp3.1\Physics.csproj.GenerateResource.cache
+C:\Users\cphfe\source\repos\Physics\Physics\obj\Debug\netcoreapp3.1\Physics.AssemblyInfoInputs.cache
+C:\Users\cphfe\source\repos\Physics\Physics\obj\Debug\netcoreapp3.1\Physics.AssemblyInfo.cs
+C:\Users\cphfe\source\repos\Physics\Physics\obj\Debug\netcoreapp3.1\Physics.csproj.CoreCompileInputs.cache
+C:\Users\cphfe\source\repos\Physics\Physics\bin\Debug\netcoreapp3.1\Physics.exe
+C:\Users\cphfe\source\repos\Physics\Physics\bin\Debug\netcoreapp3.1\Physics.deps.json
+C:\Users\cphfe\source\repos\Physics\Physics\bin\Debug\netcoreapp3.1\Physics.runtimeconfig.json
+C:\Users\cphfe\source\repos\Physics\Physics\bin\Debug\netcoreapp3.1\Physics.runtimeconfig.dev.json
+C:\Users\cphfe\source\repos\Physics\Physics\bin\Debug\netcoreapp3.1\Physics.dll
+C:\Users\cphfe\source\repos\Physics\Physics\bin\Debug\netcoreapp3.1\Physics.pdb
+C:\Users\cphfe\source\repos\Physics\Physics\obj\Debug\netcoreapp3.1\Physics.dll
+C:\Users\cphfe\source\repos\Physics\Physics\obj\Debug\netcoreapp3.1\Physics.pdb
+C:\Users\cphfe\source\repos\Physics\Physics\obj\Debug\netcoreapp3.1\Physics.genruntimeconfig.cache
