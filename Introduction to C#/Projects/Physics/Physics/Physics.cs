@@ -88,11 +88,12 @@ namespace Physics
 
 			Vector2 normal = new Vector2();
 			float correction = 0;
-
+			
 			if (circle.position.X - circle.radius < bounds.topLeft.X)
 			{
 				normal.X = 1;
-				correction = circle.position.X - circle.radius + bounds.topLeft.X;
+				correction = 0;
+				//correction = circle.position.X - circle.radius + bounds.topLeft.X; // this makes it get sucked into the wall
 			}
 			else if (circle.position.X + circle.radius > bounds.bottomRight.X)
 			{
@@ -100,42 +101,62 @@ namespace Physics
 				correction = circle.position.X + circle.radius - bounds.bottomRight.X;
 			}
 
-			if (circle.position.Y - circle.radius < bounds.topLeft.Y)
+			
+				Vector2 impulse;
+				bool doY = false;
+
+			do
 			{
-				normal.Y = 1;
-				correction = circle.position.Y - circle.radius + bounds.topLeft.Y;
+				if (normal.X != 0 || doY)
+				{
+					float dot = Vector2.Dot(normal, circle.velocity);
+					if (dot > 0)
+						return;
+					float mag = -(1 + circle.bounce) * dot / (circle.iMass);
+					impulse = mag * normal;
+					circle.velocity += impulse * circle.iMass;
+					//circle.angularVelocity += circle.iInertia * CrossProduct(-normal * circle.radius, impulse);
+					//circle will not get spin except from friction
+					//friction
+					//FRICTION
+					//dot = Vector2.Dot(circle.velocity, normal);
+					//Vector2 tangent = Vector2.Normalize(circle.velocity - dot * normal);
+					//float fMag = -Vector2.Dot(circle.velocity, tangent) / (circle.iMass);
+
+					//if (Math.Abs(fMag) < mag * circle.staticFriction)
+					//	impulse = fMag * tangent;
+					//else
+					//{
+					//	impulse = -mag * tangent * circle.dynamicFriction;
+					//}
+					//circle.velocity += impulse * circle.iMass;
+					//circle.angularVelocity += circle.iInertia * CrossProduct(-normal * circle.radius, impulse);
+
+					if (Math.Abs(correction) > 0.06)
+					circle.position += correction * percent * normal;
+
+				}
+
+				
+
+				if (doY)
+					break;
+				if (circle.position.Y - circle.radius < bounds.topLeft.Y)
+				{
+					doY = true;
+					normal = new Vector2(0, 1);
+					correction = circle.position.Y - circle.radius + bounds.topLeft.Y;
+				}
+				else if (circle.position.Y + circle.radius > bounds.bottomRight.Y)
+				{
+					doY = true;
+					normal = new Vector2(0, -1);
+					correction = circle.position.Y + circle.radius - bounds.bottomRight.Y;
+				}
+				
+
 			}
-			else if (circle.position.Y + circle.radius > bounds.bottomRight.Y)
-			{
-				normal.Y = -1;
-				correction = circle.position.Y + circle.radius - bounds.bottomRight.Y;
-			}
-
-			Vector2 impulse;
-			float dot = Vector2.Dot(normal, circle.velocity);
-			if (dot > 0)
-				return;
-			float mag = -(1 + circle.bounce) * dot / (circle.iMass + (circle.radius * circle.radius * normal.LengthSquared() * circle.iInertia));
-			impulse = mag * normal;
-			circle.velocity += impulse * circle.iMass;
-			//circle.angularVelocity += circle.iInertia * CrossProduct(new Vector2(circle.radius, circle.radius), impulse);
-
-			//friction
-			//FRICTION
-			dot = Vector2.Dot(circle.velocity, normal);
-			Vector2 tangent = Vector2.Normalize(circle.velocity - dot * normal);
-			float fMag = -Vector2.Dot(circle.velocity, tangent) / (circle.iMass + (circle.radius * circle.radius * normal.LengthSquared() * circle.iInertia));
-
-			if (Math.Abs(fMag) < mag * circle.staticFriction)
-				impulse = fMag * tangent;
-			else
-			{
-				impulse = -mag * tangent * circle.dynamicFriction;
-			}
-			circle.velocity += impulse * circle.iMass;
-			//circle.angularVelocity += circle.iInertia * CrossProduct(new Vector2(circle.radius, circle.radius), impulse);
-
-			circle.position += correction * percent * normal;
+			while (doY);
 		}
 
 		public static void ResolveCollision(CollisionPair pair)
@@ -152,38 +173,38 @@ namespace Physics
 			//restitution coefficient used (there is only ever one per collision but our simulation requires one for each object)
 			float rest = Math.Min(pair.a.bounce, pair.b.bounce);
 			float nMagSqr = pair.normal.LengthSquared();
-			float mag = (-(1 + rest) * dot) / (pair.a.iMass + pair.b.iMass + (pair.a.radius * pair.a.radius * nMagSqr * pair.a.iInertia) + (pair.b.radius * pair.b.radius * nMagSqr * pair.b.iInertia));
+			float mag = (-(1 + rest) * dot) / (pair.a.iMass + pair.b.iMass );
 			Vector2 impulse = pair.normal * mag; 
 
 			//delta v = delta p / mass
 			pair.b.velocity += impulse * pair.b.iMass;
 			pair.a.velocity -= impulse * pair.a.iMass;
-			pair.a.angularVelocity -= pair.a.iInertia * CrossProduct(pair.normal, impulse);
-			pair.b.angularVelocity += pair.b.iInertia * CrossProduct(pair.normal, impulse);
+			//pair.a.angularVelocity -= pair.a.iInertia * CrossProduct(pair.normal, impulse);
+			//pair.b.angularVelocity += pair.b.iInertia * CrossProduct(pair.normal, impulse);
 
 			//FRICTION
-			rV = pair.b.velocity - pair.a.velocity;
-			dot = Vector2.Dot(rV, pair.normal);
-			Vector2 tangent = Vector2.Normalize(rV - dot * pair.normal);
-			float tMagSqr = tangent.LengthSquared();
+			//rV = pair.b.velocity - pair.a.velocity;
+			//dot = Vector2.Dot(rV, pair.normal);
+			//Vector2 tangent = Vector2.Normalize(rV - dot * pair.normal);
+			//float tMagSqr = tangent.LengthSquared();
+			////float fMag = - Vector2.Dot(rV,tangent) / (pair.a.iMass + pair.b.iMass);
 			//float fMag = - Vector2.Dot(rV,tangent) / (pair.a.iMass + pair.b.iMass);
-			float fMag = - Vector2.Dot(rV,tangent) / (pair.a.iMass + pair.b.iMass + (pair.a.radius * pair.a.radius * tMagSqr * pair.a.iInertia) + (pair.b.radius * pair.b.radius * tMagSqr * pair.b.iInertia));
 
-			//friction coefficient estimation
-			float co = (pair.a.staticFriction + pair.b.staticFriction)/2;
+			////friction coefficient estimation
+			//float co = (pair.a.staticFriction + pair.b.staticFriction)/2;
 
-			if (Math.Abs(fMag) < mag * co)
-				impulse = fMag * tangent;
-			else
-			{
-				co = (pair.a.dynamicFriction + pair.b.dynamicFriction) / 2;
-				impulse = -mag * tangent * co;
-			}
-			pair.a.velocity -= impulse * pair.a.iMass;
-			pair.b.velocity += impulse * pair.b.iMass;
+			//if (Math.Abs(fMag) < mag * co)
+			//	impulse = fMag * tangent;
+			//else
+			//{
+			//	co = (pair.a.dynamicFriction + pair.b.dynamicFriction) / 2;
+			//	impulse = -mag * tangent * co;
+			//}
+			//pair.a.velocity -= impulse * pair.a.iMass;
+			//pair.b.velocity += impulse * pair.b.iMass;
 
-			pair.a.angularVelocity -= pair.a.iInertia * CrossProduct(new Vector2(pair.a.radius, pair.a.radius), impulse);
-			pair.b.angularVelocity += pair.b.iInertia * CrossProduct(new Vector2(pair.a.radius, pair.a.radius), impulse);
+			//pair.a.angularVelocity -= pair.a.iInertia * CrossProduct(new Vector2(pair.a.radius, pair.a.radius), impulse);
+			//pair.b.angularVelocity += pair.b.iInertia * CrossProduct(new Vector2(pair.a.radius, pair.a.radius), impulse);
 			
 
 
