@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MathLibrary
+namespace Mlib
 {
 	public struct Vector3
 	{

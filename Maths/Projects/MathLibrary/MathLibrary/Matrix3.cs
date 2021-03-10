@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MathLibrary
+namespace Mlib
 {
 	public struct Matrix3
 	{
@@ -26,12 +26,12 @@ namespace MathLibrary
 			this.m22 = m22;
 		}
 
-		public Matrix3 Identity
+		public static Matrix3 Identity
 		{
 			get { return new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1); }
 		}
 
-		public Matrix3 Zero
+		public static Matrix3 Zero
 		{
 			get { return new Matrix3(0, 0, 0, 0, 0, 0, 0, 0, 0); }
 		}
@@ -91,7 +91,7 @@ namespace MathLibrary
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m00 = 0; m01 = 0; m02 = 0;
+			m00 = 1; m01 = 0; m02 = 0;
 			m10 = 0; m11 = cos; m12 = sin;
 			m20 = 0; m21 = -sin; m22 = cos;
 		}
@@ -102,7 +102,7 @@ namespace MathLibrary
 			float cos = (float)Math.Cos(angle);
 
 			m00 = cos; m01 = 0; m02 = -sin;
-			m10 = 0; m11 = 0; m12 = 0;
+			m10 = 0; m11 = 1; m12 = 0;
 			m20 = sin; m21 = 0; m22 = cos;
 		}
 
@@ -113,7 +113,7 @@ namespace MathLibrary
 
 			m00 = cos; m01 = sin; m02 = 0;
 			m10 = -sin; m11 = cos; m12 = 0;
-			m20 = 0; m21 = 0; m22 = 0;
+			m20 = 0; m21 = 0; m22 = 1;
 		}
 
 

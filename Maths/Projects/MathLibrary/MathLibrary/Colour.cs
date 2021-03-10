@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace MathClasses
+namespace Mlib
 {
 	public struct Colour
 	{
 		public uint colour;
-
+		
 		public Colour(byte r, byte g, byte b, byte a)
 		{
-			colour = (uint)(r << 24 | g << 16 | b << 8 | a);
+			colour = (uint)(r << 24| g << 16 | b << 8 | a);
 		}
 
 		public byte GetRed()
@@ -38,17 +36,17 @@ namespace MathClasses
 
 		public void SetRed(byte r)
 		{
-			colour = (colour & 0x00FFFFFF) | (uint)(r << 24);
+			colour = ((colour & 0x00FFFFFF) | (uint)(r << 24));
 		}
 
 		public void SetGreen(byte g)
 		{
-			colour = (colour & 0xFF00FFFF) | (uint)(g << 16);
+			colour = ((colour & 0xFF00FFFF) | (uint)(g << 16));
 		}
 
 		public void SetBlue(byte b)
 		{
-			colour = (colour & 0xFFFF00FF) | (uint)(b << 8);
+			colour = ((colour & 0xFFFF00FF) | (uint)(b << 8));
 		}
 
 		public void SetAlpha(byte a)

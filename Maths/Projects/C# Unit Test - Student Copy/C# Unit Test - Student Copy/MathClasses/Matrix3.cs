@@ -8,40 +8,40 @@ namespace MathClasses
 {
     public struct Matrix3
 	{
-		public float m00, m01, m02,
-				     m10, m11, m12,
-				     m20, m21, m22;
+		public float m1, m2, m3,
+				     m4, m5, m6,
+				     m7, m8, m9;
 
-		public Matrix3 (float m00, float m01, float m02,
-						float m10, float m11, float m12,
-						float m20, float m21, float m22)
+		public Matrix3 (float m00 = 1, float m01 = 0, float m02 = 0,
+						float m10 = 0, float m11 = 1, float m12 = 0,
+						float m20 = 0, float m21 = 0, float m22 = 1)
 		{
-			this.m00 = m00;
-			this.m01 = m01;
-			this.m02 = m02;
-			this.m10 = m10;
-			this.m11 = m11;
-			this.m12 = m12;
-			this.m20 = m20;
-			this.m21 = m21;
-			this.m22 = m22;
+			this.m1 = m00;
+			this.m2 = m01;
+			this.m3 = m02;
+			this.m4 = m10;
+			this.m5 = m11;
+			this.m6 = m12;
+			this.m7 = m20;
+			this.m8 = m21;
+			this.m9 = m22;
 		}
 
-		public Matrix3 Identity
+		public static Matrix3 Identity
 		{
 			get { return new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1); }
 		}
 
-		public Matrix3 Zero
+		public static Matrix3 Zero
 		{
 			get { return new Matrix3(0, 0, 0, 0, 0, 0, 0, 0, 0); }
 		}
 
 		public static Vector3 operator *(Matrix3 m, Vector3 v)
 		{
-			return new Vector3(m.m00 * v.x + m.m10 * v.y + m.m20 * v.z,
-								m.m01 * v.x + m.m11 * v.y + m.m21 * v.z,
-								m.m02 * v.x + m.m12 * v.y + m.m22 * v.z);
+			return new Vector3(m.m1 * v.x + m.m4 * v.y + m.m7 * v.z,
+								m.m2 * v.x + m.m5 * v.y + m.m8 * v.z,
+								m.m3 * v.x + m.m6 * v.y + m.m9 * v.z);
 		}
 
 		//cannot multiply vector by matrix
@@ -49,42 +49,42 @@ namespace MathClasses
 
 		public static Matrix3 operator *(Matrix3 a, Matrix3 b)
 		{
-			return new Matrix3(a.m00 * b.m00 + a.m01 * b.m10 + a.m02 * b.m20,	//m00
-								a.m00 * b.m01 + a.m01 * b.m11 + a.m02 * b.m21,  //m01
-								a.m00 * b.m02 + a.m01 * b.m12 + a.m02 * b.m22,  //m02
-								a.m10 * b.m00 + a.m11 * b.m10 + a.m12 * b.m20,  //m10
-								a.m10 * b.m01 + a.m11 * b.m11 + a.m12 * b.m21,  //m11
-								a.m10 * b.m02 + a.m11 * b.m12 + a.m12 * b.m22,  //m12
-								a.m20 * b.m00 + a.m21 * b.m10 + a.m22 * b.m20,  //m20
-								a.m20 * b.m01 + a.m21 * b.m11 + a.m22 * b.m21,  //m21
-								a.m20 * b.m02 + a.m21 * b.m12 + a.m22 * b.m22); //m22
+			return new Matrix3(a.m1 * b.m1 + a.m2 * b.m4 + a.m3 * b.m7,	//m00
+								a.m1 * b.m2 + a.m2 * b.m5 + a.m3 * b.m8,  //m01
+								a.m1 * b.m3 + a.m2 * b.m6 + a.m3 * b.m9,  //m02
+								a.m4 * b.m1 + a.m5 * b.m4 + a.m6 * b.m7,  //m10
+								a.m4 * b.m2 + a.m5 * b.m5 + a.m6 * b.m8,  //m11
+								a.m4 * b.m3 + a.m5 * b.m6 + a.m6 * b.m9,  //m12
+								a.m7 * b.m1 + a.m8 * b.m4 + a.m9 * b.m7,  //m20
+								a.m7 * b.m2 + a.m8 * b.m5 + a.m9 * b.m8,  //m21
+								a.m7 * b.m3 + a.m8 * b.m6 + a.m9 * b.m9); //m22
 		}
 
 		public static Matrix3 operator +(Matrix3 m, float f)
 		{
-			return new Matrix3(m.m00 + f, m.m01 + f, m.m02 + f,
-								m.m10 + f, m.m11 + f, m.m12 + f,
-								m.m20 + f, m.m21 + f, m.m22 + f);
+			return new Matrix3(m.m1 + f, m.m2 + f, m.m3 + f,
+								m.m4 + f, m.m5 + f, m.m6 + f,
+								m.m7 + f, m.m8 + f, m.m9 + f);
 		}
 
 		public static Matrix3 operator +(float f, Matrix3 m)
 		{
-			return new Matrix3(m.m00 + f, m.m01 + f, m.m02 + f,
-								m.m10 + f, m.m11 + f, m.m12 + f,
-								m.m20 + f, m.m21 + f, m.m22 + f);
+			return new Matrix3(m.m1 + f, m.m2 + f, m.m3 + f,
+								m.m4 + f, m.m5 + f, m.m6 + f,
+								m.m7 + f, m.m8 + f, m.m9 + f);
 		}
 
 		public static Matrix3 operator +(Matrix3 a, Matrix3 b)
 		{
-			return new Matrix3(a.m00 + b.m00, a.m01 + b.m01, a.m02 + b.m02,
-								a.m10 + b.m10, a.m11 + b.m11, a.m12 + b.m12,
-								a.m20 + b.m20, a.m21 + b.m21, a.m22 + b.m22);
+			return new Matrix3(a.m1 + b.m1, a.m2 + b.m2, a.m3 + b.m3,
+								a.m4 + b.m4, a.m5 + b.m5, a.m6 + b.m6,
+								a.m7 + b.m7, a.m8 + b.m8, a.m9 + b.m9);
 		}
 		public static Matrix3 operator -(Matrix3 a, Matrix3 b)
 		{
-			return new Matrix3(a.m00 - b.m00, a.m01 - b.m01, a.m02 - b.m02,
-								a.m10 - b.m10, a.m11 - b.m11, a.m12 - b.m12,
-								a.m20 - b.m20, a.m21 - b.m21, a.m22 - b.m22);
+			return new Matrix3(a.m1 - b.m1, a.m2 - b.m2, a.m3 - b.m3,
+								a.m4 - b.m4, a.m5 - b.m5, a.m6 - b.m6,
+								a.m7 - b.m7, a.m8 - b.m8, a.m9 - b.m9);
 		}
 
 		public void SetRotateX( float angle )
@@ -92,9 +92,9 @@ namespace MathClasses
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m00 = 0; m01 = 0; m02 = 0;
-			m10 = 0; m11 = cos; m12 = sin;
-			m20 = 0; m21 = -sin; m22 = cos;
+			m1 = 1; m2 = 0; m3 = 0;
+			m4 = 0; m5 = cos; m6 = sin;
+			m7 = 0; m8 = -sin; m9 = cos;
 		}
 
 		public void SetRotateY(float angle)
@@ -102,9 +102,9 @@ namespace MathClasses
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m00 = cos; m01 = 0; m02 = -sin;
-			m10 = 0; m11 = 0; m12 = 0;
-			m20 = sin; m21 = 0; m22 = cos;
+			m1 = cos; m2 = 0; m3 = -sin;
+			m4 = 0; m5 = 1; m6 = 0;
+			m7 = sin; m8 = 0; m9 = cos;
 		}
 
 		public void SetRotateZ(float angle)
@@ -112,9 +112,9 @@ namespace MathClasses
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m00 = cos; m01 = sin; m02 = 0;
-			m10 = -sin; m11 = cos; m12 = 0;
-			m20 = 0; m21 = 0; m22 = 0;
+			m1 = cos; m2 = sin; m3 = 0;
+			m4 = -sin; m5 = cos; m6 = 0;
+			m7 = 0; m8 = 0; m9 = 1;
 		}
 
 

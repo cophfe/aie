@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MathLibrary
+namespace Mlib
 {
 	public struct Vector4
 	{
@@ -37,6 +37,17 @@ namespace MathLibrary
 		#endregion
 
 		#region Methods
+
+			public Vector4 Cross(Vector4 b)
+			{
+				return new Vector4(y * b.z - b.y * z, z * b.x - b.z * x, x * b.y - b.x * y, 0);
+			}
+
+			public static Vector4 Cross(Vector4 a, Vector4 b)
+			{
+				return new Vector4(a.y * b.z - b.y * a.z, a.z * b.x - b.z * a.x, a.x * b.y - b.x * a.y, 0);
+			}
+
 			public float Dot(Vector4 b)
 			{
 				return x * b.x + y * b.y + z * b.z + w * b.w;

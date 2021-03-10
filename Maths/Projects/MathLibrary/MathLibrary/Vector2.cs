@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MathLibrary
+namespace Mlib
 {
 	public struct Vector2
 	{
@@ -108,17 +108,58 @@ namespace MathLibrary
 				return x * x + y * y;
 			}
 
-			public void Normalize()
+			public void SetNormalised()
 			{
 				float iLength = 1 / Magnitude();
 				x = x * iLength;
 				y = y * iLength;
 			}
+
+			public Vector2 Normalised()
+			{
+				float iLength = 1 / Magnitude();
+				return new Vector2(x * iLength, y * iLength);
+			}
+
+			public Vector2 Perpendicular()
+			{
+				return new Vector2(-y, x);
+			}
+
+			public static float GetAngle(Vector2 a, Vector2 b)
+			{
+				a.SetNormalised();
+				b.SetNormalised();
+				Vector2 rightAngle = a.Perpendicular();
+				float aDot = a.Dot(b);
+				float pDot = rightAngle.Dot(b);
+				float angle = (float)Math.Acos(aDot);
+				if (pDot < 0)
+				{
+					angle *= -1;
+				}
+				return angle;
+			}
+
+			public float GetAngle(Vector2 v)
+			{
+				Vector2 norm = Normalised();
+				v.SetNormalised();
+				Vector2 rightAngle = norm.Perpendicular();
+				float aDot = norm.Dot(v);
+				float pDot = rightAngle.Dot(v);
+				float angle = (float)Math.Acos(aDot);
+				if (pDot > 0)
+				{
+					angle *= -1;
+				}
+				return angle;
+			}
 		#endregion
 
 		#region Operator Overloaders
 
-			public static Vector2 operator +(Vector2 a, Vector2 b)
+		public static Vector2 operator +(Vector2 a, Vector2 b)
 			{
 				return new Vector2(a.x + b.x, a.y + b.y);
 			}
