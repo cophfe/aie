@@ -117,9 +117,10 @@ namespace Mlib
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m00 = 1; m01 = 0;		m02 = 0;	m03 = 0;
-			m10 = 0; m11 = cos;		m12 = sin;
-			m20 = 0; m21 = -sin;	m22 = cos;
+			m00 = 1; m01 = 0;		m02 = 0;	m03 = 0;  
+			m10 = 0; m11 = cos;		m12 = sin;	m13 = 0;  
+			m20 = 0; m21 = -sin;	m22 = cos;	m23 = 0;  
+			m30 = 0; m31 = 0;		m32 = 0;	m33 = 1;  
 		}
 
 		public void SetRotateY(float angle)
@@ -127,9 +128,10 @@ namespace Mlib
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m00 = cos;	m01 = 0;	m02 = -sin;
-			m10 = 0;	m11 = 1;	m12 = 0;
-			m20 = sin;	m21 = 0;	m22 = cos;
+			m00 = cos;	m01 = 0;	m02 = -sin;	m03 = 0;  
+			m10 = 0;	m11 = 1;	m12 = 0;	m13 = 0;  
+			m20 = sin;	m21 = 0;	m22 = cos;	m23 = 0;  
+			m30 = 0;	m31 = 0;	m32 = 0;	m33 = 1;
 		}
 
 		public void SetRotateZ(float angle)
@@ -137,9 +139,10 @@ namespace Mlib
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m00 = cos;	m01 = sin;	m02 = 0;
-			m10 = -sin; m11 = cos;	m12 = 0;
-			m20 = 0;	m21 = 0;	m22 = 1;
+			m00 = cos;	m01 = sin;	m02 = 0;	m03 = 0;
+			m10 = -sin; m11 = cos;	m12 = 0;	m13 = 0;
+			m20 = 0;	m21 = 0;	m22 = 1;	m23 = 0;
+			m30 = 0;	m31 = 0;	m32 = 0;	m33 = 1;
 		}
 
 

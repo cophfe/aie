@@ -46,17 +46,17 @@ namespace Mlib
 		//cannot multiply vector by matrix
 		//(i mean, we can, but it would really be multiplying the matrix by vector)
 
-		public static Matrix3 operator *(Matrix3 a, Matrix3 b)
+		public static Matrix3 operator *(Matrix3 b, Matrix3 a)
 		{
-			return new Matrix3(a.m00 * b.m00 + a.m01 * b.m10 + a.m02 * b.m20,	//m00
-								a.m00 * b.m01 + a.m01 * b.m11 + a.m02 * b.m21,  //m01
-								a.m00 * b.m02 + a.m01 * b.m12 + a.m02 * b.m22,  //m02
-								a.m10 * b.m00 + a.m11 * b.m10 + a.m12 * b.m20,  //m10
-								a.m10 * b.m01 + a.m11 * b.m11 + a.m12 * b.m21,  //m11
-								a.m10 * b.m02 + a.m11 * b.m12 + a.m12 * b.m22,  //m12
-								a.m20 * b.m00 + a.m21 * b.m10 + a.m22 * b.m20,  //m20
-								a.m20 * b.m01 + a.m21 * b.m11 + a.m22 * b.m21,  //m21
-								a.m20 * b.m02 + a.m21 * b.m12 + a.m22 * b.m22); //m22
+			return new Matrix3(b.m00 * a.m00 + b.m01 * a.m10 + b.m02 * a.m20,	//m00
+								b.m00 * a.m01 + b.m01 * a.m11 + b.m02 * a.m21,  //m01
+								b.m00 * a.m02 + b.m01 * a.m12 + b.m02 * a.m22,  //m02
+								b.m10 * a.m00 + b.m11 * a.m10 + b.m12 * a.m20,  //m10
+								b.m10 * a.m01 + b.m11 * a.m11 + b.m12 * a.m21,  //m11
+								b.m10 * a.m02 + b.m11 * a.m12 + b.m12 * a.m22,  //m12
+								b.m20 * a.m00 + b.m21 * a.m10 + b.m22 * a.m20,  //m20
+								b.m20 * a.m01 + b.m21 * a.m11 + b.m22 * a.m21,  //m21
+								b.m20 * a.m02 + b.m21 * a.m12 + b.m22 * a.m22); //m22
 		}
 
 		public static Matrix3 operator +(Matrix3 m, float f)
