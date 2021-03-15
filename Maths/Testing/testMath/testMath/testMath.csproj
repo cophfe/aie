@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="MathLibrary">
-      <HintPath>..\..\..\Projects\MathLibrary\MathLibrary\bin\Debug\netstandard2.0\MathLibrary.dll</HintPath>
+    <Reference Include="Mlib">
+      <HintPath>..\..\..\Projects\MathLibrary\MathLibrary\bin\Debug\netstandard2.0\Mlib.dll</HintPath>
     </Reference>
   </ItemGroup>
 

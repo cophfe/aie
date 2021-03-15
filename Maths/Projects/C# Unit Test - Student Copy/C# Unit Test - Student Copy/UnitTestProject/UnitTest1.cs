@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MathClasses;
+using Mlib;
 
 namespace UnitTestProject
 {
@@ -37,19 +37,19 @@ namespace UnitTestProject
 
         bool compare(Matrix3 a, Matrix3 b, float tolerance = DEFAULT_TOLERANCE)
         {
-            if (Math.Abs(a.m1 - b.m1) > tolerance || Math.Abs(a.m2 - b.m2) > tolerance || Math.Abs(a.m3 - b.m3) > tolerance ||
-                Math.Abs(a.m4 - b.m4) > tolerance || Math.Abs(a.m5 - b.m5) > tolerance || Math.Abs(a.m6 - b.m6) > tolerance ||
-                Math.Abs(a.m7 - b.m7) > tolerance || Math.Abs(a.m8 - b.m8) > tolerance || Math.Abs(a.m9 - b.m9) > tolerance)
+            if (Math.Abs(a.m[0] - b.m[0]) > tolerance || Math.Abs(a.m[1] - b.m[1]) > tolerance || Math.Abs(a.m[2] - b.m[2]) > tolerance ||
+                Math.Abs(a.m[3] - b.m[3]) > tolerance || Math.Abs(a.m[4] - b.m[4]) > tolerance || Math.Abs(a.m[5] - b.m[5]) > tolerance ||
+                Math.Abs(a.m[6] - b.m[6]) > tolerance || Math.Abs(a.m[7] - b.m[7]) > tolerance || Math.Abs(a.m[8] - b.m[8]) > tolerance)
                 return false;
             return true;
         }
 
         bool compare(Matrix4 a, Matrix4 b, float tolerance = DEFAULT_TOLERANCE)
         {
-            if (Math.Abs(a.m1 - b.m1) > tolerance || Math.Abs(a.m2 - b.m2) > tolerance || Math.Abs(a.m3 - b.m3) > tolerance || Math.Abs(a.m4 - b.m4) > tolerance ||
-                Math.Abs(a.m5 - b.m5) > tolerance || Math.Abs(a.m6 - b.m6) > tolerance || Math.Abs(a.m7 - b.m7) > tolerance || Math.Abs(a.m8 - b.m8) > tolerance ||
-                Math.Abs(a.m9 - b.m9) > tolerance || Math.Abs(a.m10 - b.m10) > tolerance || Math.Abs(a.m11 - b.m11) > tolerance || Math.Abs(a.m12 - b.m12) > tolerance ||
-                Math.Abs(a.m13 - b.m13) > tolerance || Math.Abs(a.m14 - b.m14) > tolerance || Math.Abs(a.m15 - b.m15) > tolerance || Math.Abs(a.m16 - b.m16) > tolerance)
+            if (Math.Abs(a.m[0] - b.m[0]) > tolerance || Math.Abs(a.m[1] - b.m[1]) > tolerance || Math.Abs(a.m[2] - b.m[2]) > tolerance || Math.Abs(a.m[3] - b.m[3]) > tolerance ||
+                Math.Abs(a.m[4] - b.m[4]) > tolerance || Math.Abs(a.m[5] - b.m[5]) > tolerance || Math.Abs(a.m[6] - b.m[6]) > tolerance || Math.Abs(a.m[7] - b.m[7]) > tolerance ||
+                Math.Abs(a.m[8] - b.m[8]) > tolerance || Math.Abs(a.m[9] - b.m[9]) > tolerance || Math.Abs(a.m[10] - b.m[10]) > tolerance || Math.Abs(a.m[11] - b.m[11]) > tolerance ||
+                Math.Abs(a.m[12] - b.m[12]) > tolerance || Math.Abs(a.m[13] - b.m[13]) > tolerance || Math.Abs(a.m[14] - b.m[14]) > tolerance || Math.Abs(a.m[15] - b.m[15]) > tolerance)
                 return false;
             return true;
         }
@@ -342,7 +342,7 @@ namespace UnitTestProject
             Matrix4 m4c = new Matrix4();
             m4c.SetRotateZ(0.72f);
 
-            Matrix4 m4d = m4b * m4c;
+            Matrix4 m4d = m4c * m4b;
 
             Assert.IsTrue(compare(m4d,
                 new Matrix4(-0.644213855267f, -0.565019249916f, 0.515501439571f, 0, -0.659384667873f, 0.751805722713f, 0, 0, -0.387556940317f, -0.339913755655f, -0.856888711452f, 0, 0, 0, 0, 1)));
@@ -369,7 +369,7 @@ namespace UnitTestProject
             // homogeneous point translation
             Matrix3 m3c = new Matrix3();
             m3c.SetRotateZ(2.2f);
-            m3c.m7 = 55; m3c.m8 = 44; m3c.m9 = 1;
+            m3c.m[6] = 55; m3c.m[7] = 44; m3c.m[8] = 1;
 
             Vector3 v3a = new Vector3(13.5f, -48.23f, 1);
 
@@ -386,7 +386,7 @@ namespace UnitTestProject
                                       0, 1, 0, 0,
                                       0, 0, 1, 0,
                                       55, 44, 99, 1);
-            
+
             Vector4 v4a = new Vector4(13.5f, -48.23f, -54, 1);
 
             Vector4 v4c = m4b * v4a;
@@ -399,14 +399,14 @@ namespace UnitTestProject
             // homogeneous point translation
             Matrix4 m4c = new Matrix4();
             m4c.SetRotateZ(2.2f);
-            m4c.m13 = 55; m4c.m14 = 44; m4c.m15 = 99; m4c.m16 = 1;
+            m4c.m[12] = 55; m4c.m[13] = 44; m4c.m[14] = 99; m4c.m[15] = 1;
 
             Vector4 v4a = new Vector4(13.5f, -48.23f, -54, 1);
 
             Vector4 v4c = m4c * v4a;
             Assert.IsTrue(compare(v4c, new Vector4(86.0490112305f, 83.2981109619f, 45, 1)));
         }
-        
+
         [TestMethod]
         public void Vector3MatrixTranslation3()
         {
@@ -428,7 +428,7 @@ namespace UnitTestProject
             // homogeneous point translation
             Matrix3 m3c = new Matrix3();
             m3c.SetRotateZ(2.2f);
-            m3c.m7 = 55; m3c.m8 = 44; m3c.m9 = 1;
+            m3c.m[6] = 55; m3c.m[7] = 44; m3c.m[8] = 1;
 
             Vector3 v3a = new Vector3(13.5f, -48.23f, 0);
 
@@ -458,7 +458,7 @@ namespace UnitTestProject
             // homogeneous point translation
             Matrix4 m4c = new Matrix4();
             m4c.SetRotateZ(2.2f);
-            m4c.m13 = 55; m4c.m14 = 44; m4c.m15 = 99; m4c.m16 = 1;
+            m4c.m[12] = 55; m4c.m[13] = 44; m4c.m[14] = 99; m4c.m[15] = 1;
 
             Vector4 v4a = new Vector4(13.5f, -48.23f, -54, 0);
 
@@ -511,7 +511,7 @@ namespace UnitTestProject
 
             Assert.AreEqual<byte>(c.GetAlpha(), 0x78);
         }
-        
+
         [TestMethod]
         public void ColourSetRed()
         {

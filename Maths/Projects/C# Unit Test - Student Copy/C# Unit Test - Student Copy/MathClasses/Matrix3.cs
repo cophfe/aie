@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace MathClasses
 {
     public struct Matrix3
@@ -47,7 +48,7 @@ namespace MathClasses
 		//cannot multiply vector by matrix
 		//(i mean, we can, but it would really be multiplying the matrix by vector)
 
-		public static Matrix3 operator *(Matrix3 a, Matrix3 b)
+		public static Matrix3 operator *(Matrix3 b, Matrix3 a)
 		{
 			return new Matrix3(a.m1 * b.m1 + a.m2 * b.m4 + a.m3 * b.m7,	//m00
 								a.m1 * b.m2 + a.m2 * b.m5 + a.m3 * b.m8,  //m01

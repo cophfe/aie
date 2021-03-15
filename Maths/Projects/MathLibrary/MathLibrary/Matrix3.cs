@@ -7,24 +7,19 @@ namespace Mlib
 {
 	public struct Matrix3
 	{
-		public float m00, m01, m02,
-				     m10, m11, m12,
-				     m20, m21, m22;
 
-		public Matrix3 (float m00, float m01, float m02,
-						float m10, float m11, float m12,
-						float m20, float m21, float m22)
+		public float[] m;
+
+
+		public Matrix3(float m00 = 1, float m01 = 0, float m02 = 0,
+						float m10 = 0, float m11 = 1, float m12 = 0,
+						float m20 = 0, float m21 = 0, float m22 = 1)
 		{
-			this.m00 = m00;
-			this.m01 = m01;
-			this.m02 = m02;
-			this.m10 = m10;
-			this.m11 = m11;
-			this.m12 = m12;
-			this.m20 = m20;
-			this.m21 = m21;
-			this.m22 = m22;
+
+			m = new float[] { m00, m01, m02, m10, m11, m12, m20, m21, m22 };
 		}
+
+
 
 		public static Matrix3 Identity
 		{
@@ -38,84 +33,120 @@ namespace Mlib
 
 		public static Vector3 operator *(Matrix3 m, Vector3 v)
 		{
-			return new Vector3(m.m00 * v.x + m.m10 * v.y + m.m20 * v.z,
-								m.m01 * v.x + m.m11 * v.y + m.m21 * v.z,
-								m.m02 * v.x + m.m12 * v.y + m.m22 * v.z);
+			return new Vector3(m.m[0] * v.x + m.m[3] * v.y + m.m[6] * v.z,
+								m.m[1] * v.x + m.m[4] * v.y + m.m[7] * v.z,
+								m.m[2] * v.x + m.m[5] * v.y + m.m[8] * v.z);
 		}
 
-		//cannot multiply vector by matrix
-		//(i mean, we can, but it would really be multiplying the matrix by vector)
-
-		public static Matrix3 operator *(Matrix3 b, Matrix3 a)
+		public static Matrix3 operator *(Matrix3 a, Matrix3 b)
 		{
-			return new Matrix3(b.m00 * a.m00 + b.m01 * a.m10 + b.m02 * a.m20,	//m00
-								b.m00 * a.m01 + b.m01 * a.m11 + b.m02 * a.m21,  //m01
-								b.m00 * a.m02 + b.m01 * a.m12 + b.m02 * a.m22,  //m02
-								b.m10 * a.m00 + b.m11 * a.m10 + b.m12 * a.m20,  //m10
-								b.m10 * a.m01 + b.m11 * a.m11 + b.m12 * a.m21,  //m11
-								b.m10 * a.m02 + b.m11 * a.m12 + b.m12 * a.m22,  //m12
-								b.m20 * a.m00 + b.m21 * a.m10 + b.m22 * a.m20,  //m20
-								b.m20 * a.m01 + b.m21 * a.m11 + b.m22 * a.m21,  //m21
-								b.m20 * a.m02 + b.m21 * a.m12 + b.m22 * a.m22); //m22
+			Matrix3 m = new Matrix3(1);
+			for (int x = 0; x < 3; x++)
+			{
+				for (int y = 0; y < 3; y++)
+				{
+					m.m[x + 3 * y] = a.m[x] * b.m[3 * y] + a.m[x + 3] * b.m[1 + 3 * y] + a.m[x + 6] * b.m[2 + 3 * y];
+				}
+			}
+			return m;
 		}
 
 		public static Matrix3 operator +(Matrix3 m, float f)
 		{
-			return new Matrix3(m.m00 + f, m.m01 + f, m.m02 + f,
-								m.m10 + f, m.m11 + f, m.m12 + f,
-								m.m20 + f, m.m21 + f, m.m22 + f);
+			return new Matrix3(m.m[0] + f, m.m[1] + f, m.m[2] + f,
+								m.m[3] + f, m.m[4] + f, m.m[5] + f,
+								m.m[6] + f, m.m[7] + f, m.m[8] + f);
 		}
 
 		public static Matrix3 operator +(float f, Matrix3 m)
 		{
-			return new Matrix3(m.m00 + f, m.m01 + f, m.m02 + f,
-								m.m10 + f, m.m11 + f, m.m12 + f,
-								m.m20 + f, m.m21 + f, m.m22 + f);
+			return new Matrix3(m.m[0] + f, m.m[1] + f, m.m[2] + f,
+								m.m[3] + f, m.m[4] + f, m.m[5] + f,
+								m.m[6] + f, m.m[7] + f, m.m[8] + f);
 		}
 
 		public static Matrix3 operator +(Matrix3 a, Matrix3 b)
 		{
-			return new Matrix3(a.m00 + b.m00, a.m01 + b.m01, a.m02 + b.m02,
-								a.m10 + b.m10, a.m11 + b.m11, a.m12 + b.m12,
-								a.m20 + b.m20, a.m21 + b.m21, a.m22 + b.m22);
+			return new Matrix3(a.m[0] + b.m[0], a.m[1] + b.m[1], a.m[2] + b.m[2],
+								a.m[3] + b.m[3], a.m[4] + b.m[4], a.m[5] + b.m[5],
+								a.m[6] + b.m[6], a.m[7] + b.m[7], a.m[8] + b.m[8]);
 		}
 		public static Matrix3 operator -(Matrix3 a, Matrix3 b)
 		{
-			return new Matrix3(a.m00 - b.m00, a.m01 - b.m01, a.m02 - b.m02,
-								a.m10 - b.m10, a.m11 - b.m11, a.m12 - b.m12,
-								a.m20 - b.m20, a.m21 - b.m21, a.m22 - b.m22);
+			return new Matrix3(a.m[0] - b.m[0], a.m[1] - b.m[1], a.m[2] - b.m[2],
+								a.m[3] - b.m[3], a.m[4] - b.m[4], a.m[5] - b.m[5],
+								a.m[6] - b.m[6], a.m[7] - b.m[7], a.m[8] - b.m[8]);
 		}
 
-		public void SetRotateX( float angle )
+		public void SetRotateX(float angle)
 		{
+			if (m == null)
+				m = new float[9];
+
+
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m00 = 1; m01 = 0; m02 = 0;
-			m10 = 0; m11 = cos; m12 = sin;
-			m20 = 0; m21 = -sin; m22 = cos;
+			m[0] = 1; m[1] = 0; m[2] = 0;
+			m[3] = 0; m[4] = cos; m[5] = sin;
+			m[6] = 0; m[7] = -sin; m[8] = cos;
 		}
 
 		public void SetRotateY(float angle)
 		{
+			if (m == null)
+				m = new float[9];
+
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m00 = cos; m01 = 0; m02 = -sin;
-			m10 = 0; m11 = 1; m12 = 0;
-			m20 = sin; m21 = 0; m22 = cos;
+			m[0] = cos; m[1] = 0; m[2] = -sin;
+			m[3] = 0; m[4] = 1; m[5] = 0;
+			m[6] = sin; m[7] = 0; m[8] = cos;
 		}
 
 		public void SetRotateZ(float angle)
 		{
+			if (m == null)
+				m = new float[9];
+
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m00 = cos; m01 = sin; m02 = 0;
-			m10 = -sin; m11 = cos; m12 = 0;
-			m20 = 0; m21 = 0; m22 = 1;
+			m[0] = cos; m[1] = sin; m[2] = 0;
+			m[3] = -sin; m[4] = cos; m[5] = 0;
+			m[6] = 0; m[7] = 0; m[8] = 1;
 		}
 
+		public Matrix3 Inverse()
+		{
+			//	0 3 6
+			//	1 4 7
+			//	2 5 8
+
+			float d0 = m[4] * m[8] - m[5] * m[7], d3 = m[1] * m[8] - m[7] * m[2], d6 = m[1] * m[5] - m[4] * m[2];
+			float det = m[0] * d0 - m[3] * d3 + m[6] * d6;
+			Matrix3 i = Identity;
+			if (det == 0)
+				return i; // THERE IS NO INVERSE
+
+			//transposes, cofactors minor-ises and divides by the determinant all in one step (god, please dont make me debug this)
+
+			
+			float iDet = 1/ det;
+			i.m[0] = d0 * iDet;
+			i.m[1] = -d3 * iDet;
+			i.m[2] = d6 * iDet;
+			i.m[3] = -(m[3] * m[8] - m[6] * m[5]) * iDet;
+			i.m[4] = (m[0] * m[8] - m[6] * m[2]) * iDet;
+			i.m[5] = -(m[0] * m[5] - m[3] * m[2]) * iDet;
+			i.m[6] = (m[3] * m[7] - m[6] * m[4]) * iDet;
+			i.m[7] = -(m[0] * m[7] - m[6] * m[1]) * iDet;
+			i.m[8] = (m[0] * m[4] - m[3] * m[1]) * iDet;
+
+			return i;
+
+		}
 
 	}
 }

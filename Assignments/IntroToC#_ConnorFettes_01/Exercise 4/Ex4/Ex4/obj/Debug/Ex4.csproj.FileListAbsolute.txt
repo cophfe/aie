@@ -1,7 +1,0 @@
-C:\Users\cphfe\source\repos\Ex4\Ex4\bin\Debug\Ex4.exe.config
-C:\Users\cphfe\source\repos\Ex4\Ex4\bin\Debug\Ex4.exe
-C:\Users\cphfe\source\repos\Ex4\Ex4\bin\Debug\Ex4.pdb
-C:\Users\cphfe\source\repos\Ex4\Ex4\obj\Debug\Ex4.csprojAssemblyReference.cache
-C:\Users\cphfe\source\repos\Ex4\Ex4\obj\Debug\Ex4.csproj.CoreCompileInputs.cache
-C:\Users\cphfe\source\repos\Ex4\Ex4\obj\Debug\Ex4.exe
-C:\Users\cphfe\source\repos\Ex4\Ex4\obj\Debug\Ex4.pdb

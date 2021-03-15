@@ -1,6 +1,0 @@
-C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 4\Ex4\Ex4\bin\Release\Ex4.exe.config
-C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 4\Ex4\Ex4\bin\Release\Ex4.exe
-C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 4\Ex4\Ex4\bin\Release\Ex4.pdb
-C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 4\Ex4\Ex4\obj\Release\Ex4.csproj.CoreCompileInputs.cache
-C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 4\Ex4\Ex4\obj\Release\Ex4.exe
-C:\Users\cphfe\Desktop\Work\aie\Assignments\IntroToC#\Exercise 4\Ex4\Ex4\obj\Release\Ex4.pdb
