@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Mlib
 {
-	public struct Matrix3
+	public class Matrix3
 	{
 
 		public float[] m;
@@ -148,5 +148,85 @@ namespace Mlib
 
 		}
 
+		// 0 1 2
+		// 3 4 5 
+		// 6 7 8
+
+		public void SetTranslation(float x, float y)
+		{
+			m[2] = x;
+			m[5] = y;
+			m[8] = 1;
+		}
+
+		public void SetTranslation(Vector3 pos)
+		{
+			m[2] = pos.x;
+			m[5] = pos.y;
+			m[8] = 1;
+		}
+
+		public void SetScale(float x, float y)
+		{
+			m[0] = x; m[1] = 0; m[2] = 0; 
+			m[3] = 0; m[4] = y; m[5] = 0; 
+			m[6] = 0; m[7] = 0; m[8] = 1;
+		}
+
+		public void SetScale(Vector2 scale)
+		{
+			m[0] = scale.x; m[1] = 0;		m[2] = 0;
+			m[3] = 0;		m[4] = scale.y; m[5] = 0;
+			m[6] = 0;		m[7] = 0;		m[8] = 1;
+		}
+
+		public static Matrix3 GetScale(float x, float y)
+		{
+			return new Matrix3(x, m11: y);
+		}
+
+		public static Matrix3 GetScale(Vector2 scale)
+		{
+			return new Matrix3(scale.x, m11: scale.y);
+		}
+
+		public static Matrix3 GetRotateX(float angle)
+		{
+			float sin = (float)Math.Sin(angle);
+			float cos = (float)Math.Cos(angle);
+
+			return new Matrix3(1, 0, 0, 0, cos, sin, 0, -sin, cos);
+		}
+
+		public static Matrix3 GetRotateY(float angle)
+		{
+			float sin = (float)Math.Sin(angle);
+			float cos = (float)Math.Cos(angle);
+
+			return new Matrix3(cos, 0, -sin, 0, 1, 0, sin, 0, cos);
+		}
+
+		public static Matrix3 GetRotateZ(float angle)
+		{
+			float sin = (float)Math.Sin(angle);
+			float cos = (float)Math.Cos(angle);
+
+			return new Matrix3(cos, sin, 0, -sin, cos, 0, 0, 0, 1);
+		}
+
+		public static Matrix3 GetTranslation(Vector3 pos)
+		{
+			return new Matrix3(m02: pos.x, m12: pos.y);
+		}
+
+		public static Matrix3 GetTranslation(float x, float y)
+		{
+			return new Matrix3(m02: x, m12: y);
+		}
+
+		public Vector2 GetTranslation()
+		{
+			return new Vector2(m[2], m[5]);
+		}
 	}
 }

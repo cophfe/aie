@@ -10,35 +10,37 @@ namespace testMath
 		static void Main(string[] args)
 		{
 
+
+
+			Matrix4 m4c = new Matrix4(1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, -1, 1, 1, 1);
+			//m4c.SetRotateZ(4);
+			//Matrix4 m4d = m4c.Inverse();
+
 			
 
-			Matrix3 m3c = new Matrix3(0, -3, -2, 1, -4, -2, -3, 4, 1);
-			m3c.SetRotateZ(4);
-			Matrix3 m3d = m3c.Inverse();
-
-
-
 			Console.WriteLine("Matrix 3 Multiplication Result:\n");
-			for (int i = 0; i < m3c.m.Length; i++)
+			for (int i = 0; i < m4c.m.Length; i++)
 			{
-				Console.Write($"{m3c.m[i]},\t");
-				if (i == 2 || i == 5 || i == 8)
+				Console.Write($"{m4c.m[i]},\t");
+				if (i == 3 || i == 7 || i == 11 || i == 15)
 					Console.Write('\n');
 			}
+
+					Console.Write('\n');
 			Console.Write('\n');
-			for (int i = 0; i < m3d.m.Length; i++)
+			for (int i = 0; i < m4d.m.Length; i++)
 			{
-				Console.Write($"{m3d.m[i]},\t");
-				if (i == 2 || i == 5 || i == 8)
+				Console.Write($"{m4d.m[i]},\t");
+				if (i == 3 || i == 7 || i == 11 || i == 15)
 					Console.Write('\n');
 			}
 			Console.Write('\n');
 
-			m3d = m3d * m3c;
-			for (int i = 0; i < m3d.m.Length; i++)
+			m4d = m4d * m4c;
+			for (int i = 0; i < m4d.m.Length; i++)
 			{
-				Console.Write($"{m3d.m[i]},\t");
-				if (i == 2 || i == 5 || i == 8)
+				Console.Write($"{m4d.m[i]},\t");
+				if (i == 3 || i == 7 || i == 11 || i == 15)
 					Console.Write('\n');
 			}
 			Console.ReadKey();

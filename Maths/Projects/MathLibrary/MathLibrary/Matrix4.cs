@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Mlib
 {
-	public struct Matrix4
+	public class Matrix4
 	{
 		public float[] m;
 
@@ -103,6 +103,8 @@ namespace Mlib
 			m[12] = 0;	m[13] = 0;		m[14] = 0;		//m[15] = 1;  
 		}
 
+		
+
 		public void SetRotateY(float angle)
 		{
 			if (m == null) 
@@ -130,6 +132,138 @@ namespace Mlib
 
 		}
 
+		public void SetTranslation(float x, float y, float z)
+		{
+			m[3] = x;
+			m[7] = y;
+			m[11] = z;
+			m[15] = 1;
+		}
+
+		public void SetTranslation(Vector3 pos)
+		{
+			m[3] = pos.x;
+			m[7] = pos.y;
+			m[11] = pos.z;
+			m[15] = 1;
+		}
+
+		public void SetScale(float x, float y, float z)
+		{
+			m[0] = x; m[1] = 0; m[2] = 0;   m[3] = 0;
+			m[4] = 0; m[5] = y; m[6] = 0;  m[7] = 0;
+			m[8] = 0; m[9] = 0; m[10] = z;  m[11] = 0;
+			m[12] = 0; m[13] = 0; m[14] = 0;    m[15] = 1;
+		}
+
+		public void SetScale(Vector3 scale)
+		{
+			m[0] = scale.x; m[1] = 0; m[2] = 0; m[3] = 0;
+			m[4] = 0; m[5] = scale.y; m[6] = 0; m[7] = 0;
+			m[8] = 0; m[9] = 0; m[10] = scale.z; m[11] = 0;
+			m[12] = 0; m[13] = 0; m[14] = 0; m[15] = 1;
+		}
+
+		public static Matrix3 GetScale(float x, float y, float z)
+		{
+			return new Matrix3(x, m11: y, m22: z);
+		}
+
+		public static Matrix3 GetScale(Vector3 scale)
+		{
+			return new Matrix3(scale.x, m11: scale.y, m22: scale.z);
+		}
+
+		public static Matrix4 GetRotateX(float angle)
+		{
+			float sin = (float)Math.Sin(angle);
+			float cos = (float)Math.Cos(angle);
+
+			return new Matrix4(1, 0, 0, 0, 0, cos, sin, 0, 0, -sin, cos, 0, 0, 0, 0, 1);
+		}
+
+		public static Matrix4 GetRotateY(float angle)
+		{
+			float sin = (float)Math.Sin(angle);
+			float cos = (float)Math.Cos(angle);
+
+			return new Matrix4(cos, 0, -sin, 0, 0, 1, 0, 0, sin, 0, cos, 0, 0, 0, 0, 1);
+		}
+
+		public static Matrix4 GetRotateZ(float angle)
+		{
+			float sin = (float)Math.Sin(angle);
+			float cos = (float)Math.Cos(angle);
+
+			return new Matrix4(cos, sin, 0, 0, -sin, cos, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+		}
+
+		public static Matrix4 GetTranslation(Vector3 pos)
+		{
+			return new Matrix4(m03: pos.x, m13: pos.y, m23: pos.z);
+		}
+
+		public static Matrix4 GetTranslation(float x, float y, float z)
+		{
+			return new Matrix4(m02: x, m12: y, m23: z);
+		}
+
+		public Vector3 GetTranslation()
+		{
+			return new Vector3(m[3], m[7], m[11]);
+		}
+
+		
+		//public Matrix4 Inverse()
+		//{
+		//	// 0   4   8   12
+		//	// 1   5   9   13
+		//	// 2   6   10  14
+		//	// 3   7   11  15
+
+		//	//det 0
+		//	float d5TL = m[10] * m[15] - m[14] * m[11];
+		//	float d9TL = m[6] * m[15] - m[14] * m[7]; 
+		//	float d13TL = m[6] * m[11] - m[10] * m[7];
+
+		//	float det0 = m[5] * m[10] * m[15] + m[6] ;
+		//		//m[5] * d5TL - m[9] * d9TL + m[13] * d13TL;
+
+		//	//det 4
+		//	float d1ML = m[9] * m[14] - m[13] * m[10];
+		//	float d9ML = m[1] * m[14] - m[13] * m[2];
+		//	float d13ML = m[1] * m[10] - m[9] * m[2];
+
+		//	float det8 = ;
+		//		//m[1] * d1ML - m[9] * d9ML + m[13] * d13ML;
+
+		//	//det 8
+		//	float d1MR = m[5] * m[14] - m[13] * m[6];
+		//	float d5MR = m[1] * m[14] - m[13] * m[2];
+		//	float d13MR = m[1] * m[6] - m[5] * m[2];
+
+		//	float det12 = m[1] * d1MR - m[5] * d5MR + m[13] * d13MR;
+
+		//	//det 12
+		//	float d1TR = m[6] * m[11] - m[10] * m[7]; //equal to d13TL
+		//	float d5TR = m[2] * m[11] - m[10] * m[3];
+		//	float d9TR = m[2] * m[7] - m[6] * m[3];
+
+		//	float det4 = m[1] * d1TR - m[5] * d5TR + m[9] * d9TR;
+
+
+
+		//	//det full
+		//	float det = m[0] * det0 - m[4] * det4 + m[8] * det8 - m[12] * det12;
+
+		//	Console.WriteLine(det);
+		//	Matrix4 i = Identity;
+		//	if (det == 0)
+		//		return i; // THERE IS NO INVERSE
+		//	return i;
+		//	float iDet = 1 / det;
+
+		//}
 
 	}
 }
