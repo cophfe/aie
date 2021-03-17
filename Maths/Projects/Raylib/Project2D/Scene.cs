@@ -38,12 +38,12 @@ namespace Project2D
 			}
 		}
 
-		public void IteratePhysics()
+		public void IteratePhysics(float deltaTime)
 		{
 			foreach (var child in children)
 			{
 				if (child is PhysicsObject)
-					((PhysicsObject)child).Iterate();
+					((PhysicsObject)child).Iterate(deltaTime);
 			}
 		}
 

@@ -38,6 +38,12 @@ namespace Mlib
 								m.m[2] * v.x + m.m[5] * v.y + m.m[8] * v.z);
 		}
 
+		public static Vector2 operator *(Matrix3 m, Vector2 v)
+		{
+			return new Vector2(m.m[0] * v.x + m.m[2] * v.y,
+								m.m[1] * v.x + m.m[3] * v.y);
+		}
+
 		public static Matrix3 operator *(Matrix3 a, Matrix3 b)
 		{
 			Matrix3 m = new Matrix3(1);
@@ -159,11 +165,23 @@ namespace Mlib
 			m[8] = 1;
 		}
 
-		public void SetTranslation(Vector3 pos)
+		public void SetTranslation(Vector2 pos)
 		{
 			m[2] = pos.x;
 			m[5] = pos.y;
 			m[8] = 1;
+		}
+
+		public void AddTranslation(float x, float y)
+		{
+			m[2] += x;
+			m[5] += y;
+		}
+
+		public void AddTranslation(Vector2 pos)
+		{
+			m[2] += pos.x;
+			m[5] += pos.y;
 		}
 
 		public void SetScale(float x, float y)
@@ -214,7 +232,7 @@ namespace Mlib
 			return new Matrix3(cos, sin, 0, -sin, cos, 0, 0, 0, 1);
 		}
 
-		public static Matrix3 GetTranslation(Vector3 pos)
+		public static Matrix3 GetTranslation(Vector2 pos)
 		{
 			return new Matrix3(m02: pos.x, m12: pos.y);
 		}

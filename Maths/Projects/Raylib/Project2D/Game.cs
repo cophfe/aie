@@ -23,7 +23,8 @@ namespace Project2D
         private float deltaTime = 0.005f;
 
         //Scenes are gameobjects that hold every other gameobject
-        Scene[] scenes;
+        List<Scene> scenes = new List<Scene>();
+        int currentScene = 0;
 
         public Game()
         {
@@ -41,7 +42,12 @@ namespace Project2D
             }
 
             //Initialize objects here
-            scenes[0].Initialise();
+            GameObject game = new GameObject("../Images/download.jpg", new Vector2(200, 200), 0, 1f);
+            //GameObject gameSprite = new GameObject("../Images/download.jpg", new Vector2(128, 128), 0, 0.5f, game);
+            List<GameObject> l = new List<GameObject>();
+            l.Add(game);
+            scenes.Add(new Scene(l));
+            //scenes[0].Initialise();
 		}
 
         public void Shutdown()
@@ -63,7 +69,9 @@ namespace Project2D
             frames++;
 
             //Update game objects here       
-           
+            
+            //scenes[currentScene].Update(); //per frame
+            scenes[currentScene].IteratePhysics(deltaTime); //based on deltaTime
 		}
 
         public void Draw()
@@ -72,8 +80,9 @@ namespace Project2D
 
             ClearBackground(RLColor.WHITE);
 
-			//Draw game objects here
-
+            //Draw game objects here
+            scenes[currentScene].UpdateTransforms();
+            scenes[currentScene].Draw();
 
             DrawText(fps.ToString(), 10, 10, 14, RLColor.RED);
             EndDrawing();
