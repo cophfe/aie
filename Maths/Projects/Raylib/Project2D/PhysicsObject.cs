@@ -29,7 +29,7 @@ namespace Project2D
 		float gravity;
 
 
-		public PhysicsObject(string fileName, Vector2 position, Collider collider = null, float drag = 0, float restitution = 0, float rotation = 0, float scale = 1, GameObject parent = null) : base(fileName, position, rotation, scale, parent)
+		public PhysicsObject(string fileName, Vector2 position, Vector2 scale, Collider collider = null, float drag = 0, float restitution = 0,  float rotation = 0, GameObject parent = null) : base(fileName, position, scale, rotation, parent)
 		{
 			this.collider = collider;
 			this.restitution = restitution;

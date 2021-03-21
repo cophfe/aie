@@ -10,13 +10,18 @@ namespace Mlib
 
 		public float[] m;
 
+		//float m11 = 1; float m12 = 0; float m13 = 0;
+		//float m21 = 0; float m22 = 1; float m23 = 0;
+		//float m31 = 0; float m32 = 0; float m33 = 1;
 
-		public Matrix3(float m00 = 1, float m01 = 0, float m02 = 0,
-						float m10 = 0, float m11 = 1, float m12 = 0,
-						float m20 = 0, float m21 = 0, float m22 = 1)
+		public Matrix3(float m1 = 1, float m4 = 0, float m7 = 0,
+						float m2 = 0, float m5 = 1, float m8 = 0,
+						float m3 = 0, float m6 = 0, float m9 = 1)
 		{
 
-			m = new float[] { m00, m01, m02, m10, m11, m12, m20, m21, m22 };
+			m = new float[] { m1, m3, m6, 
+								m2, m4, m7,
+								m3, m5, m8 };
 		}
 
 
@@ -40,8 +45,8 @@ namespace Mlib
 
 		public static Vector2 operator *(Matrix3 m, Vector2 v)
 		{
-			return new Vector2(m.m[0] * v.x + m.m[2] * v.y,
-								m.m[1] * v.x + m.m[3] * v.y);
+			return new Vector2(m.m[0] * v.x + m.m[3] * v.y,
+								m.m[1] * v.x + m.m[5] * v.y);
 		}
 
 		public static Matrix3 operator *(Matrix3 a, Matrix3 b)
@@ -51,7 +56,7 @@ namespace Mlib
 			{
 				for (int y = 0; y < 3; y++)
 				{
-					m.m[x + 3 * y] = a.m[x] * b.m[3 * y] + a.m[x + 3] * b.m[1 + 3 * y] + a.m[x + 6] * b.m[2 + 3 * y];
+					m.m[x + 3 * y] = a.m[x] * b.m[3 * y] + a.m[x + 3] * b.m[4 * y] + a.m[x + 6] * b.m[5 * y];
 				}
 			}
 			return m;
@@ -93,9 +98,9 @@ namespace Mlib
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m[0] = 1; m[1] = 0; m[2] = 0;
-			m[3] = 0; m[4] = cos; m[5] = sin;
-			m[6] = 0; m[7] = -sin; m[8] = cos;
+			m[0] = 1; m[3] = 0; m[6] = 0;
+			m[1] = 0; m[4] = cos; m[7] = sin;
+			m[2] = 0; m[5] = -sin; m[8] = cos;
 		}
 
 		public void SetRotateY(float angle)
@@ -106,9 +111,9 @@ namespace Mlib
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m[0] = cos; m[1] = 0; m[2] = -sin;
-			m[3] = 0; m[4] = 1; m[5] = 0;
-			m[6] = sin; m[7] = 0; m[8] = cos;
+			m[0] = cos; m[3] = 0; m[6] = -sin;
+			m[1] = 0; m[4] = 1; m[7] = 0;
+			m[2] = sin; m[5] = 0; m[8] = cos;
 		}
 
 		public void SetRotateZ(float angle)
@@ -119,9 +124,9 @@ namespace Mlib
 			float sin = (float)Math.Sin(angle);
 			float cos = (float)Math.Cos(angle);
 
-			m[0] = cos; m[1] = sin; m[2] = 0;
-			m[3] = -sin; m[4] = cos; m[5] = 0;
-			m[6] = 0; m[7] = 0; m[8] = 1;
+			m[0] = cos; m[3] = -sin; m[6] = 0;
+			m[1] = sin; m[4] = cos; m[7] = 0;
+			m[2] = 0; m[5] = 0; m[8] = 1;
 		}
 
 		public Matrix3 Inverse()
@@ -200,12 +205,12 @@ namespace Mlib
 
 		public static Matrix3 GetScale(float x, float y)
 		{
-			return new Matrix3(x, m11: y);
+			return new Matrix3(x, m4: y);
 		}
 
 		public static Matrix3 GetScale(Vector2 scale)
 		{
-			return new Matrix3(scale.x, m11: scale.y);
+			return new Matrix3(scale.x, m4: scale.y);
 		}
 
 		public static Matrix3 GetRotateX(float angle)
@@ -234,12 +239,12 @@ namespace Mlib
 
 		public static Matrix3 GetTranslation(Vector2 pos)
 		{
-			return new Matrix3(m02: pos.x, m12: pos.y);
+			return new Matrix3(m6: pos.x, m7: pos.y);
 		}
 
 		public static Matrix3 GetTranslation(float x, float y)
 		{
-			return new Matrix3(m02: x, m12: y);
+			return new Matrix3(m6: x, m7: y);
 		}
 
 		public Vector2 GetTranslation()

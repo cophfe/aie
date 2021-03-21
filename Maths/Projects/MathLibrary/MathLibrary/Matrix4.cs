@@ -166,12 +166,12 @@ namespace Mlib
 
 		public static Matrix3 GetScale(float x, float y, float z)
 		{
-			return new Matrix3(x, m11: y, m22: z);
+			return new Matrix3(x, m4: y, m8: z);
 		}
 
 		public static Matrix3 GetScale(Vector3 scale)
 		{
-			return new Matrix3(scale.x, m11: scale.y, m22: scale.z);
+			return new Matrix3(scale.x, m4: scale.y, m8: scale.z);
 		}
 
 		public static Matrix4 GetRotateX(float angle)

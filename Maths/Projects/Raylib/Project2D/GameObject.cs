@@ -25,10 +25,10 @@ namespace Project2D
 		//private Image sprite; //probably dont need this
 		private Texture2D texture;
 		private Colour colour;
-		float scale = 1;
+		Vector2 scale;
 
-		RLVector2 position;
-		float rotation;
+		protected Vector2 position;
+		protected float rotation;
 
 		public GameObject()
 		{
@@ -37,15 +37,16 @@ namespace Project2D
 			collider = null;
 			colour = new Colour();
 
+			scale = Vector2.One;
 			r1.width = texture.width;
 			r1.height = texture.height;
-			r2.width = texture.width * scale;
-			r2.height = texture.height * scale;
+			r2.width = texture.width * scale.x;
+			r2.height = texture.height * scale.y;
 			origin.x = r2.width / 2;
 			origin.y = r2.height / 2;
 		}
 
-		public GameObject(string fileName, Vector2 position, float rotation = 0, float scale = 1, GameObject parent = null)
+		public GameObject(string fileName, Vector2 position, Vector2 scale, float rotation = 0, GameObject parent = null)
 		{
 			if (fileName != null)
 			{
@@ -55,13 +56,16 @@ namespace Project2D
 			if (parent != null)
 				parent.addChild(this);
 				
-			localTransform = Matrix3.GetRotateZ(rotation) * Matrix3.GetTranslation(position) * Matrix3.GetScale(scale,scale);
+			localTransform = Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rotation) * Matrix3.GetScale(scale);
 			UpdateTransforms();
 
+			this.position = position;
+			this.rotation = rotation;
+			this.scale = scale;
 			r1.width = texture.width;
 			r1.height = texture.height;
-			r2.width = texture.width * scale;
-			r2.height = texture.height * scale;
+			r2.width = texture.width * scale.x;
+			r2.height = texture.height * scale.y;
 			origin.x = r2.width / 2;
 			origin.y = r2.height / 2;
 		}
@@ -72,12 +76,12 @@ namespace Project2D
 			//sprite = LoadImage(fileName);
 			texture = LoadTexture(fileName);
 			//texture = LoadTextureFromImage(sprite);
-			
-			scale = 1;
+
+			scale = Vector2.One;
 			r1.width = texture.width;
 			r1.height = texture.height;
-			r2.width = texture.width * scale;
-			r2.height = texture.height * scale;
+			r2.width = texture.width * scale.x;
+			r2.height = texture.height * scale.y;
 			origin.x = r2.width / 2;
 			origin.y = r2.height / 2;
 
@@ -96,7 +100,11 @@ namespace Project2D
 
 		public virtual void Update()
 		{
-			localTransform *= Matrix3.GetRotateZ(0.001f);
+
+			localTransform = localTransform * Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rotation) * Matrix3.GetScale(scale);
+
+
+
 			foreach(var child in children)
 			{
 				child.Update();
@@ -106,8 +114,7 @@ namespace Project2D
 
 		Rectangle r2 = new Rectangle();
 		Rectangle r1 = new Rectangle();
-		float i = 0;
-
+		const float convert = (float)(180/Math.PI);
 		RLVector2 origin = new RLVector2();
 		public virtual void Draw()
 		{
@@ -119,16 +126,19 @@ namespace Project2D
 			if (!isDrawn)
 				return;
 
-			position = Renderer.ToRLVector2(globalTransform.GetTranslation());
 
+
+			scale.x = 1;// (float)Math.Sqrt(globalTransform.m[0] * globalTransform.m[0] + globalTransform.m[3] * globalTransform.m[3]);
+			scale.y = 1;// (float)Math.Sqrt(globalTransform.m[1] * globalTransform.m[1] + globalTransform.m[4] * globalTransform.m[4]);
+			r2.width = texture.width * scale.x;
+			r2.height = texture.height * scale.y;
 			
+			r2.x = globalTransform.m[2] - r2.width/2;
+			r2.y = globalTransform.m[5] - r2.height/2;
 			
-			r2.x = position.x - r2.width/2;
-			r2.y = position.y - r2.height / 2;
 			//DrawTextureEx(texture, Renderer.ToRLVector2(globalTransform.GetTranslation()), 0, scale, RLColor.RED);
-			DrawTexturePro(texture, r1, r2, origin, i, RLColor.WHITE) ;
-			i+= 0.01f;
-			localTransform.SetTranslation((float)Math.Sin(i/10)*40 + 300, (float)Math.Cos(i/10)*40 + 300);
+			DrawTexturePro(texture, r1, r2, origin, (float)Math.Atan2(globalTransform.m[1], globalTransform.m[0]) * convert, RLColor.RED) ;
+
 			//Console.WriteLine(Math.Atan2(globalTransform.m[2], globalTransform.m[3]) / Math.PI * 180);
 			
 			//DrawTexturePro(texture, (Rectangle){ 0,0, texture.width, texture.height}, (Rectangle){ 0,0, texture.width, texture.height}, )

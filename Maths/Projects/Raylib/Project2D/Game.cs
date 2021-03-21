@@ -42,7 +42,7 @@ namespace Project2D
             }
 
             //Initialize objects here
-            GameObject game = new GameObject("../Images/download.jpg", new Vector2(200, 200), 0, 1f);
+            GameObject game = new GameObject("../Images/download.png", new Vector2(200, 200), Vector2.One, 1f);
             //GameObject gameSprite = new GameObject("../Images/download.jpg", new Vector2(128, 128), 0, 0.5f, game);
             List<GameObject> l = new List<GameObject>();
             l.Add(game);
@@ -70,7 +70,7 @@ namespace Project2D
 
             //Update game objects here       
             
-            //scenes[currentScene].Update(); //per frame
+            scenes[currentScene].Update(); //per frame
             scenes[currentScene].IteratePhysics(deltaTime); //based on deltaTime
 		}
 
@@ -84,6 +84,7 @@ namespace Project2D
             scenes[currentScene].UpdateTransforms();
             scenes[currentScene].Draw();
 
+            
             DrawText(fps.ToString(), 10, 10, 14, RLColor.RED);
             EndDrawing();
         }

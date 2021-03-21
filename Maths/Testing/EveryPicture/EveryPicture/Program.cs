@@ -11,11 +11,11 @@ namespace EveryPicture
 		const int maxColour = (int)ConsoleColor.White;
 		static void Main(string[] args)
 		{
-			ConsoleHelper.SetCurrentFont("Consolas", 72);
-			Console.WindowHeight = h;
-			Console.WindowWidth = w*2;
-			Console.BufferWidth = w*2;
-			Console.BufferHeight = h;
+			ConsoleHelper.SetCurrentFont("Consolas", 16);
+			//Console.WindowHeight = 20;
+			//Console.WindowWidth = 40;
+			//Console.BufferWidth = 40;
+			//Console.BufferHeight = 20;
 			Console.BackgroundColor = ConsoleColor.Black;
 			Console.Clear();
 			Console.CursorVisible = false;
@@ -80,8 +80,9 @@ namespace EveryPicture
 				{
 					bmp.SetPixel(x, y, GetColor(array[x + y * h]));
 				}
-			}
-			bmp.Save($"Images/2x2_{index}.jpg");
+			} //DONT USE THIS ON SSD
+			//IT WILL EAT THROUGH ITS USAGES
+			//bmp.Save($"Images/2x2_{index}.jpg");
 			index++;
 			
 		}
