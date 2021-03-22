@@ -95,12 +95,12 @@ static public class Renderer
 	public static void DrawTexture(Texture2D texture, Matrix3 transform, Colour color)
 	{
 		Vector2 xAxis = new Vector2();
-		xAxis.x = transform.m[0];
-		xAxis.y = transform.m[1];
+		xAxis.x = transform.m11;
+		xAxis.y = transform.m21;
 
 		Vector2 yAxis = new Vector2();
-		yAxis.x = transform.m[3];
-		yAxis.y = transform.m[4];
+		yAxis.x = transform.m12;
+		yAxis.y = transform.m22;
 
 		//Note - the angle of a unit circle count up when they go anticlockwise,
 		//but because in Raylib land positive Y is down, a positive angle will
@@ -121,8 +121,8 @@ static public class Renderer
 
 		//The target position and size to render at
 		Rectangle destination = new Rectangle();
-		destination.x = transform.m[6];
-		destination.y = transform.m[7];
+		destination.x = transform.m13;
+		destination.y = transform.m23;
 		destination.width = source.width * scaleX;
 		destination.height = source.height * scaleY;
 

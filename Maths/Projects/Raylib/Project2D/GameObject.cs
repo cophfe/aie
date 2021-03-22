@@ -11,155 +11,155 @@ namespace Project2D
 {
 	class GameObject
 	{
+		#region Variables
+
+		const float convertToDegrees = (float)(180 / Math.PI);
+		
+		//scene tree stuff
 		protected GameObject parent = null;
 		protected List<GameObject> children = new List<GameObject>();
 
+		//matrices
 		protected Matrix3 localTransform = new Matrix3();
 		protected Matrix3 globalTransform = new Matrix3();
 
-		protected bool hasPhysics;
-		protected bool isDrawn;
-
-		protected Collider collider;
-
-		//private Image sprite; //probably dont need this
+		//drawing
+		protected bool isDrawn = false;
 		private Texture2D texture;
 		private Colour colour;
+		Rectangle spriteRectangle = new Rectangle();
+		Rectangle textureRectangle = new Rectangle();
+		RLVector2 origin = new RLVector2();
+
+		//local information
+		public Vector2 position;
+		public float rotation;
 		Vector2 scale;
 
-		protected Vector2 position;
-		protected float rotation;
+		//physics
+		protected bool hasPhysics = false;
+		protected Collider collider = null;
+		#endregion
 
+		#region Initiation
 		public GameObject()
 		{
 			isDrawn = false;
 			hasPhysics = false;
 			collider = null;
-			colour = new Colour();
 
-			scale = Vector2.One;
-			r1.width = texture.width;
-			r1.height = texture.height;
-			r2.width = texture.width * scale.x;
-			r2.height = texture.height * scale.y;
-			origin.x = r2.width / 2;
-			origin.y = r2.height / 2;
+
+			Init(null, Vector2.Zero, Vector2.One, 0, null, new Colour());
 		}
 
 		public GameObject(string fileName, Vector2 position, Vector2 scale, float rotation = 0, GameObject parent = null)
 		{
-			if (fileName != null)
+			Init(fileName, position, scale, rotation, parent, new Colour());
+		}
+
+		public GameObject(string fileName)
+		{
+			Init(fileName, Vector2.Zero, Vector2.One, 0, null, new Colour());
+		}
+
+		void Init(string textureFile, Vector2 position, Vector2 scale, float rotation, GameObject parent, Colour colour)
+		{
+			if (textureFile != null)
 			{
 				isDrawn = true;
-				texture = LoadTexture(fileName);
+				texture = LoadTexture(textureFile);
+
+				textureRectangle.width = texture.width;
+				textureRectangle.height = texture.height;
+				spriteRectangle.width = texture.width * scale.x;
+				spriteRectangle.height = texture.height * scale.y;
+				origin.x = spriteRectangle.width / 2;
+				origin.y = spriteRectangle.height / 2;
 			}
 			if (parent != null)
 				parent.addChild(this);
-				
+
+			//position and scale will be zero if no values are given
 			localTransform = Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rotation) * Matrix3.GetScale(scale);
 			UpdateTransforms();
 
 			this.position = position;
 			this.rotation = rotation;
 			this.scale = scale;
-			r1.width = texture.width;
-			r1.height = texture.height;
-			r2.width = texture.width * scale.x;
-			r2.height = texture.height * scale.y;
-			origin.x = r2.width / 2;
-			origin.y = r2.height / 2;
-		}
-
-		public GameObject(string fileName)
-		{
-			isDrawn = true;
-			//sprite = LoadImage(fileName);
-			texture = LoadTexture(fileName);
-			//texture = LoadTextureFromImage(sprite);
-
-			scale = Vector2.One;
-			r1.width = texture.width;
-			r1.height = texture.height;
-			r2.width = texture.width * scale.x;
-			r2.height = texture.height * scale.y;
-			origin.x = r2.width / 2;
-			origin.y = r2.height / 2;
 
 		}
+		#endregion
 
-		void addChild(GameObject child)
+		#region Scene Tree Methods
+		protected void addChild(GameObject child)
 		{
 			children.Add(child);
 			child.SetParent(this);
 		}
 
-		void SetParent(GameObject parent)
+		public void SetParent(GameObject parent)
 		{
+			if (parent != null)
+			{
+				RemoveChild(this);
+			}
 			this.parent = parent;
 		}
 
+		void RemoveChild(GameObject child)
+		{
+			children.Remove(child);
+		}
+
+		public void Delete()
+		{
+			foreach (var child in children)
+			{
+				child.Delete();
+			}
+			parent.RemoveChild(this);
+		}
+		#endregion
+
 		public virtual void Update()
 		{
-
-			localTransform = localTransform * Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rotation) * Matrix3.GetScale(scale);
-
-
 
 			foreach(var child in children)
 			{
 				child.Update();
 			}
 		}
-
-
-		Rectangle r2 = new Rectangle();
-		Rectangle r1 = new Rectangle();
-		const float convert = (float)(180/Math.PI);
-		RLVector2 origin = new RLVector2();
+		
 		public virtual void Draw()
 		{
+			
+
+			if (isDrawn)
+			{
+				
+				spriteRectangle.width = texture.width * (float)Math.Sqrt(globalTransform.m11 * globalTransform.m11 + globalTransform.m21 * globalTransform.m21);
+				spriteRectangle.height = texture.height * (float)Math.Sqrt(globalTransform.m12 * globalTransform.m12 + globalTransform.m22 * globalTransform.m22);
+				origin.x = spriteRectangle.width / 2;
+				origin.y = spriteRectangle.height / 2;
+
+				spriteRectangle.x = globalTransform.m13 - spriteRectangle.width / 2;
+				spriteRectangle.y = globalTransform.m23 - spriteRectangle.height / 2;
+				DrawTexturePro(texture, textureRectangle, spriteRectangle, origin, (float)Math.Atan2(globalTransform.m21, globalTransform.m11) * convertToDegrees, RLColor.WHITE);
+				
+			}
+
+
 			foreach (var child in children)
 			{
 				child.Draw();
 			}
-
-			if (!isDrawn)
-				return;
-
-
-
-			scale.x = 1;// (float)Math.Sqrt(globalTransform.m[0] * globalTransform.m[0] + globalTransform.m[3] * globalTransform.m[3]);
-			scale.y = 1;// (float)Math.Sqrt(globalTransform.m[1] * globalTransform.m[1] + globalTransform.m[4] * globalTransform.m[4]);
-			r2.width = texture.width * scale.x;
-			r2.height = texture.height * scale.y;
-			
-			r2.x = globalTransform.m[2] - r2.width/2;
-			r2.y = globalTransform.m[5] - r2.height/2;
-			
-			//DrawTextureEx(texture, Renderer.ToRLVector2(globalTransform.GetTranslation()), 0, scale, RLColor.RED);
-			DrawTexturePro(texture, r1, r2, origin, (float)Math.Atan2(globalTransform.m[1], globalTransform.m[0]) * convert, RLColor.RED) ;
-
-			//Console.WriteLine(Math.Atan2(globalTransform.m[2], globalTransform.m[3]) / Math.PI * 180);
-			
-			//DrawTexturePro(texture, (Rectangle){ 0,0, texture.width, texture.height}, (Rectangle){ 0,0, texture.width, texture.height}, )
-
-			
 		}
 
-		public void SetPosition(Vector2 pos)
-		{
-			localTransform.SetTranslation(pos);
-		}
-
-		public void SetRotation(float rad)
-		{
-			Matrix3 rotation = Matrix3.GetRotateZ(rad);
-
-			localTransform = localTransform * rotation;
-		}
 
 		public virtual void UpdateTransforms()
 		{
+			localTransform = Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rotation) * Matrix3.GetScale(scale);
+
 			if (parent == null)
 			{
 				globalTransform = localTransform;
@@ -179,15 +179,36 @@ namespace Project2D
 			return globalTransform;
 		}
 
-		public void Delete()
+		public void SetGlobalRotation(float rad)
 		{
-			foreach (var child in children)
-			{
-				child.Delete();
-			}
-			parent.children.Remove(this);
+			//localTransform = Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rad - (float)Math.Atan2(parent.GetGlobalTransform().m21, parent.GetGlobalTransform().m11)) * Matrix3.GetScale(scale);
 		}
 
-		
+		public void SetRotation(float rad) 
+		{
+			rotation = rad;
+			UpdateTransforms();
+		}
+		public void AddRotation(float rad)
+		{
+			rotation += rad;
+			UpdateTransforms();
+		}
+
+		public void SetPosition(Vector2 pos)
+		{
+			position = pos;
+			UpdateTransforms();
+		}
+		public void AddPosition(Vector2 pos)
+		{
+			position += pos;
+			UpdateTransforms();
+		}
+
+
+
+
+
 	}
 }

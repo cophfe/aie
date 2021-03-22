@@ -39,6 +39,14 @@ namespace Project2D
 			
 		}
 
+		// NOTE:
+		// Xx Yx Zx
+		// Xy Yy Zy
+		// Xz Yz Zz
+		// ^  ^ Up vector
+		// Right Vector
+
+
 		public PhysicsObject(string fileName = null) : base(fileName)
 		{
 			collider = null;

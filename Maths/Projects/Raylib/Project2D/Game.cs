@@ -31,6 +31,10 @@ namespace Project2D
             
         }
 
+        GameObject gameSprite;
+        GameObject game;
+        GameObject gameSprite2;
+
         public void Init()
         {
             stopwatch.Start();
@@ -42,8 +46,9 @@ namespace Project2D
             }
 
             //Initialize objects here
-            GameObject game = new GameObject("../Images/download.png", new Vector2(200, 200), Vector2.One, 1f);
-            //GameObject gameSprite = new GameObject("../Images/download.jpg", new Vector2(128, 128), 0, 0.5f, game);
+            game = new GameObject("../Images/face.png", new Vector2(350, 340), Vector2.One, 0);
+            gameSprite = new GameObject("../Images/download.jpg", new Vector2(0, 200), new Vector2(0.5f, 0.5f), 0, game);
+            gameSprite2 = new GameObject("../Images/blue.png", new Vector2(0, 200), Vector2.One, 0, gameSprite);
             List<GameObject> l = new List<GameObject>();
             l.Add(game);
             scenes.Add(new Scene(l));
@@ -72,7 +77,9 @@ namespace Project2D
             
             scenes[currentScene].Update(); //per frame
             scenes[currentScene].IteratePhysics(deltaTime); //based on deltaTime
-		}
+            game.AddRotation(0.001f);
+            gameSprite.SetGlobalRotation(0);
+        }
 
         public void Draw()
         {
@@ -81,6 +88,7 @@ namespace Project2D
             ClearBackground(RLColor.WHITE);
 
             //Draw game objects here
+            
             scenes[currentScene].UpdateTransforms();
             scenes[currentScene].Draw();
 

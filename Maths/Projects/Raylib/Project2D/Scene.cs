@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mlib;
 
 namespace Project2D
 {
 	class Scene : GameObject
 	{
-
-		public Scene(List<GameObject> GameObjects)
+		
+		public Scene(List<GameObject> gameObjects)
 		{
-			children.AddRange(GameObjects);
+			globalTransform = Matrix3.Identity;
+			foreach (GameObject kid in gameObjects)
+			{
+				addChild(kid);
+			}
 		}
 
 		public override void Update() //currently the same as in GameObject
