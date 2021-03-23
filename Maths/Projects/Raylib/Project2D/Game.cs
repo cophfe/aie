@@ -34,6 +34,9 @@ namespace Project2D
         GameObject gameSprite;
         GameObject game;
         GameObject gameSprite2;
+        Player player;
+        GameObject playerChild;
+        GameObject playerChild2;
 
         public void Init()
         {
@@ -46,12 +49,16 @@ namespace Project2D
             }
 
             //Initialize objects here
-            game = new GameObject("../Images/face.png", new Vector2(350, 340), Vector2.One, 0);
-            gameSprite = new GameObject("../Images/download.jpg", new Vector2(0, 200), new Vector2(0.5f, 0.5f), 0, game);
-            gameSprite2 = new GameObject("../Images/blue.png", new Vector2(0, 200), Vector2.One, 0, gameSprite);
+            game = new GameObject("../Images/face.png", new Vector2(350, 340), new Vector2(0.5f, 0.5f), 0);
+            gameSprite = new GameObject("../Images/blue.png", new Vector2(300, 0), new Vector2(0.25f, 0.25f), 0, game);
+            gameSprite2 = new GameObject("../Images/paint.png", new Vector2(0, 300), Vector2.One, 0, gameSprite);
+
             List<GameObject> l = new List<GameObject>();
             l.Add(game);
             scenes.Add(new Scene(l));
+            player = new Player("../Images/player.png", new Vector2(250, 250), new Vector2(0.2f, 0.2f), 0, scenes[0]);
+            playerChild = new GameObject("../Images/paint.png", new Vector2(0, 0), new Vector2(2f, 2f), 0, player);
+            playerChild2 = new GameObject("../Images/paint.png", new Vector2(0, 500), Vector2.One /2, 0, playerChild);
             //scenes[0].Initialise();
 		}
 
@@ -75,10 +82,18 @@ namespace Project2D
 
             //Update game objects here       
             
-            scenes[currentScene].Update(); //per frame
-            scenes[currentScene].IteratePhysics(deltaTime); //based on deltaTime
-            game.AddRotation(0.001f);
-            gameSprite.SetGlobalRotation(0);
+            scenes[currentScene].Update(deltaTime); //per frame
+            scenes[currentScene].UpdateTransforms();
+            game.AddRotation((float)Math.Cos(currentTime/ 1000.0f)/1000);
+            gameSprite.AddRotation((float)Math.Sin(currentTime/ 1000.0f)/ 1000);
+            game.SetPosition(new Vector2((float)Math.Sin(currentTime / 1000.0f) * 20 + 350, (float)Math.Cos(currentTime / 1000.0f) * 20 + 340));
+            playerChild.AddRotation(5 * deltaTime);
+            Vector2 m = GetMousePosition().ToVector2();
+            game.SetPosition(m);
+            DrawCircle((int)m.x, (int)m.y, 5, RLColor.RED);
+            
+            //gameSprite.SetRotation((float)Math.Cos(currentTime/ 1000.0f));
+            //gameSprite.SetGlobalRotation(0);
         }
 
         public void Draw()
@@ -89,11 +104,12 @@ namespace Project2D
 
             //Draw game objects here
             
-            scenes[currentScene].UpdateTransforms();
+            
             scenes[currentScene].Draw();
 
             
             DrawText(fps.ToString(), 10, 10, 14, RLColor.RED);
+            DrawText($"{player.velocity.Magnitude()}", 10, 30, 14, RLColor.BLACK);
             EndDrawing();
         }
 

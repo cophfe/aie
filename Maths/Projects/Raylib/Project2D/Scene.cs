@@ -19,11 +19,11 @@ namespace Project2D
 			}
 		}
 
-		public override void Update() //currently the same as in GameObject
+		public override void Update(float deltaTime) //currently the same as in GameObject
 		{
 			foreach( var child in children)
 			{
-				child.Update();
+				child.Update(deltaTime);
 			}
 		}
 
@@ -43,14 +43,8 @@ namespace Project2D
 			}
 		}
 
-		public void IteratePhysics(float deltaTime)
-		{
-			foreach (var child in children)
-			{
-				if (child is PhysicsObject)
-					((PhysicsObject)child).Iterate(deltaTime);
-			}
-		}
+		
+		
 
 
 	}

@@ -32,38 +32,44 @@ namespace Project2D
 		RLVector2 origin = new RLVector2();
 
 		//local information
-		public Vector2 position;
-		public float rotation;
-		Vector2 scale;
+		public Vector2 readPos;
+		Vector2 readSca;
+		public float readRot;
 
 		//physics
 		protected bool hasPhysics = false;
 		protected Collider collider = null;
+
+		//id
+		static ulong idCounter = 0;
 		#endregion
 
 		#region Initiation
 		public GameObject()
 		{
+			
 			isDrawn = false;
 			hasPhysics = false;
 			collider = null;
 
 
-			Init(null, Vector2.Zero, Vector2.One, 0, null, new Colour());
+			Init(null, Vector2.Zero, Vector2.One, 0, null, new Colour(0xFF, 0xFF, 0xFF, 0xFF));
 		}
 
 		public GameObject(string fileName, Vector2 position, Vector2 scale, float rotation = 0, GameObject parent = null)
 		{
-			Init(fileName, position, scale, rotation, parent, new Colour());
+			Init(fileName, position, scale, rotation, parent, new Colour(0xFF, 0xFF, 0xFF, 0xFF));
 		}
 
 		public GameObject(string fileName)
 		{
-			Init(fileName, Vector2.Zero, Vector2.One, 0, null, new Colour());
+			Init(fileName, Vector2.Zero, Vector2.One, 0, null, new Colour(0xFF, 0xFF, 0xFF, 0xFF));
 		}
 
 		void Init(string textureFile, Vector2 position, Vector2 scale, float rotation, GameObject parent, Colour colour)
 		{
+			id = idCounter;
+			idCounter++;
 			if (textureFile != null)
 			{
 				isDrawn = true;
@@ -81,11 +87,10 @@ namespace Project2D
 
 			//position and scale will be zero if no values are given
 			localTransform = Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rotation) * Matrix3.GetScale(scale);
+			
+			
+			this.colour = colour;
 			UpdateTransforms();
-
-			this.position = position;
-			this.rotation = rotation;
-			this.scale = scale;
 
 		}
 		#endregion
@@ -121,14 +126,25 @@ namespace Project2D
 		}
 		#endregion
 
-		public virtual void Update()
+		public virtual void Update(float deltaTime)
 		{
 
 			foreach(var child in children)
 			{
-				child.Update();
+				child.Update(deltaTime);
 			}
 		}
+
+		protected float id;
+
+		public float Id
+		{
+			get
+			{
+				return id;
+			}
+		}
+
 		
 		public virtual void Draw()
 		{
@@ -136,16 +152,18 @@ namespace Project2D
 
 			if (isDrawn)
 			{
+				globalTransform.GetAllTransformations(ref readPos, ref readSca, ref readRot);
 				
-				spriteRectangle.width = texture.width * (float)Math.Sqrt(globalTransform.m11 * globalTransform.m11 + globalTransform.m21 * globalTransform.m21);
-				spriteRectangle.height = texture.height * (float)Math.Sqrt(globalTransform.m12 * globalTransform.m12 + globalTransform.m22 * globalTransform.m22);
+				spriteRectangle.width = texture.width * readSca.x;
+				spriteRectangle.height = texture.height * readSca.y;
 				origin.x = spriteRectangle.width / 2;
 				origin.y = spriteRectangle.height / 2;
 
-				spriteRectangle.x = globalTransform.m13 - spriteRectangle.width / 2;
-				spriteRectangle.y = globalTransform.m23 - spriteRectangle.height / 2;
-				DrawTexturePro(texture, textureRectangle, spriteRectangle, origin, (float)Math.Atan2(globalTransform.m21, globalTransform.m11) * convertToDegrees, RLColor.WHITE);
-				
+				spriteRectangle.x = readPos.x;
+				spriteRectangle.y = readPos.y;
+
+				DrawTexturePro(texture, textureRectangle, spriteRectangle, origin, readRot * convertToDegrees, colour);
+				//DrawTexture(texture)
 			}
 
 
@@ -158,8 +176,6 @@ namespace Project2D
 
 		public virtual void UpdateTransforms()
 		{
-			localTransform = Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rotation) * Matrix3.GetScale(scale);
-
 			if (parent == null)
 			{
 				globalTransform = localTransform;
@@ -186,24 +202,26 @@ namespace Project2D
 
 		public void SetRotation(float rad) 
 		{
-			rotation = rad;
+			readRot = rad;
 			UpdateTransforms();
 		}
 		public void AddRotation(float rad)
 		{
-			rotation += rad;
-			UpdateTransforms();
+			localTransform *= Matrix3.GetRotateZ(rad);
+			//readRot += rad;
 		}
 
 		public void SetPosition(Vector2 pos)
 		{
-			position = pos;
-			UpdateTransforms();
+			
 		}
 		public void AddPosition(Vector2 pos)
 		{
-			position += pos;
-			UpdateTransforms();
+			Matrix3 translation = Matrix3.Zero;
+			translation.SetTranslation(pos);
+			localTransform += translation;
+			//readPos += pos;
+			
 		}
 
 

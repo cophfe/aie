@@ -12,31 +12,56 @@ namespace Project2D
 {
 	class PhysicsObject : GameObject
 	{
-		Collider collider;
+		Collider collider = null;
 
-		RLVector2 position;
-		RLVector2 velocity;
-		RLVector2 acceleration;
-		float angularVelocity;
+		//protected Vector2 position;
+		public Vector2 velocity;
+		protected Vector2 acceleration;
+		protected float angularVelocity;
+		protected float angularDrag;
 
-		float restitution;
-		float drag = 0f;
-		float mass;
-		float iMass;
-		float inetia;
-		float iInetia;
+		protected float restitution;
+		protected float drag = 0f;
+		protected float mass;
+		protected float iMass;
+		protected float inetia;
+		protected float iInetia;
 
-		float gravity;
+		protected float gravity;
 
 
-		public PhysicsObject(string fileName, Vector2 position, Vector2 scale, Collider collider = null, float drag = 0, float restitution = 0,  float rotation = 0, GameObject parent = null) : base(fileName, position, scale, rotation, parent)
+		public PhysicsObject(string fileName, Vector2 position, Vector2 scale, Collider collider = null, float drag = 0, float angularDrag = 0, float restitution = 0,  float rotation = 0, GameObject parent = null) : base(fileName, position, scale, rotation, parent)
 		{
+			hasPhysics = true;
 			this.collider = collider;
 			this.restitution = restitution;
 			this.drag = drag;
-			mass = this.collider.GetMass();
-			iMass = 1 / mass;
+			this.angularDrag = angularDrag;
+			if (collider != null) 
+			{
+				mass = this.collider.GetMass();
+				iMass = 1 / mass;
+			}
+			else
+			{
+				mass = 1;
+				iMass = 1;
+			}
+				
 			
+			
+		}
+
+		public PhysicsObject(string fileName = null) : base(fileName)
+		{
+			collider = null;
+			drag = 0;
+
+		}
+
+		public void Init(Collider collider, float drag, float restitution, float rotation)
+		{
+
 		}
 
 		// NOTE:
@@ -47,36 +72,28 @@ namespace Project2D
 		// Right Vector
 
 
-		public PhysicsObject(string fileName = null) : base(fileName)
-		{
-			collider = null;
-			drag = 0;
-
-		}
+		
 
 
 
-		public void Iterate(float deltaTime)
+		public override void Update(float deltaTime)
 		{
 			if (hasPhysics)
 			{
 				acceleration.y -= gravity * iMass;
 
-				velocity.x += acceleration.y * deltaTime;
-				velocity.x += acceleration.y * deltaTime;
-
-				position.x += (velocity.x - velocity.x * drag) * deltaTime;
-				position.y += (velocity.y - velocity.y * drag) * deltaTime;
-
-			}
-			foreach (var child in children)
-			{
-				if (child is PhysicsObject)
-					((PhysicsObject)child).Iterate(deltaTime);
-
+				velocity.x += acceleration.x * deltaTime;
+				velocity.y += acceleration.y * deltaTime;
+				velocity -= velocity * drag * deltaTime;
+				angularVelocity -= angularVelocity * angularDrag * deltaTime;
+				//position.x += (velocity.x - velocity.x * drag) * deltaTime;
+				//position.y += (velocity.y - velocity.y * drag) * deltaTime;
+				AddPosition(velocity * deltaTime);
+				AddRotation((angularVelocity) * deltaTime);
 			}
 			acceleration.x = 0;
 			acceleration.y = 0;
+			base.Update(deltaTime);
 		}
 	}
 }

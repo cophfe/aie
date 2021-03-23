@@ -183,6 +183,13 @@ namespace Mlib
 			m13 = 0;		m23 = 0;		m33 = 1;
 		}
 
+		public Vector2 GetScale() 
+		{
+			return new Vector2((float)Math.Sqrt(m11 * m11 + m21 * m21), (float)Math.Sqrt(m12 * m12 + m22 * m22));
+		}
+
+		
+
 		public static Matrix3 GetScale(float x, float y)
 		{
 			return new Matrix3(x, m22: y);
@@ -236,6 +243,29 @@ namespace Mlib
 		public Vector2 GetTranslation()
 		{
 			return new Vector2(m13, m23);
+		}
+
+		public float GetZRotation() 
+		{
+			Vector2 s = GetScale();
+			return (float)Math.Atan2(m21 / s.x, m22 / s.y);
+		}
+
+		public void GetAllTransformations(ref Vector2 position, ref Vector2 scale, ref float rotation)
+		{
+			position = new Vector2(m13, m23);
+			scale = GetScale();
+			rotation = (float)Math.Atan2(m21 / scale.x, m22 / scale.y);
+		}
+
+		public Vector2 GetForwardVector()
+		{
+			return new Vector2(m12, m22);
+		}
+
+		public Vector2 GetRightVector()
+		{
+			return new Vector2(m11, m21);
 		}
 	}
 }
