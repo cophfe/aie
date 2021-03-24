@@ -9,6 +9,8 @@ namespace Project2D
 	class Collider
 	{
 		protected GameObject tiedGameObject;
+		protected ObjectType type;
+
 		public Collider(GameObject tiedObj)
 		{
 			tiedGameObject = tiedObj;
@@ -26,6 +28,7 @@ namespace Project2D
 
 		public CircleCollider(GameObject tiedObj) : base(tiedObj)
 		{
+			type = ObjectType.Circle;
 		}
 
 	}
@@ -48,5 +51,11 @@ namespace Project2D
 		public PolygonCollider(GameObject tiedObj) : base(tiedObj)
 		{
 		}
+	}
+
+	enum ObjectType
+	{
+		Circle,
+		Polygon
 	}
 }

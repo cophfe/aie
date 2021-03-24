@@ -6,6 +6,11 @@ namespace Mlib
 {
 	public struct Vector2
 	{
+		private static Vector2 up = new Vector2(1, 0);
+		private static Vector2 right = new Vector2(0, 1);
+		private static Vector2 zero = new Vector2(0, 0);
+		private static Vector2 one = new Vector2(1, 1);
+		
 		public float x, y;
 
 		public Vector2(float x, float y)
@@ -22,7 +27,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector2(0, 0);
+						return zero;
 					}
 				}
 
@@ -30,7 +35,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector2(1, 1);
+						return one;
 					}
 				}
 
@@ -38,7 +43,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector2(0, 1);
+						return up;
 					}
 				}
 
@@ -46,7 +51,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector2(0, -1);
+						return -1*up;
 					}
 				}
 
@@ -54,7 +59,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector2(-1, 0);
+						return -1* right;
 					}
 				}
 
@@ -62,7 +67,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector2(1, 0);
+						return right;
 					}
 				}
 			#endregion

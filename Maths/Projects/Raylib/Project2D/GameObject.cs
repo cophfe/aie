@@ -32,9 +32,9 @@ namespace Project2D
 		RLVector2 origin = new RLVector2();
 
 		//local information
-		public Vector2 readPos;
-		Vector2 readSca;
-		public float readRot;
+		protected Vector2 position;
+		protected Vector2 scale;
+		protected float rotation;
 
 		//physics
 		protected bool hasPhysics = false;
@@ -87,7 +87,9 @@ namespace Project2D
 
 			//position and scale will be zero if no values are given
 			localTransform = Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rotation) * Matrix3.GetScale(scale);
-			
+			this.position = position;
+			this.rotation = rotation;
+			this.scale = scale;
 			
 			this.colour = colour;
 			UpdateTransforms();
@@ -123,6 +125,7 @@ namespace Project2D
 				child.Delete();
 			}
 			parent.RemoveChild(this);
+			UnloadTexture(texture);
 		}
 		#endregion
 
@@ -145,25 +148,26 @@ namespace Project2D
 			}
 		}
 
-		
+		private Vector2 globalPosition;
+		private float globalRotation;
+		private Vector2 globalScale;
+
 		public virtual void Draw()
 		{
-			
 
 			if (isDrawn)
 			{
-				globalTransform.GetAllTransformations(ref readPos, ref readSca, ref readRot);
+				globalTransform.GetAllTransformations(ref globalPosition, ref globalScale, ref globalRotation);
 				
-				spriteRectangle.width = texture.width * readSca.x;
-				spriteRectangle.height = texture.height * readSca.y;
+				spriteRectangle.width = texture.width * globalScale.x;
+				spriteRectangle.height = texture.height * globalScale.y;
 				origin.x = spriteRectangle.width / 2;
 				origin.y = spriteRectangle.height / 2;
 
-				spriteRectangle.x = readPos.x;
-				spriteRectangle.y = readPos.y;
+				spriteRectangle.x = globalPosition.x;
+				spriteRectangle.y = globalPosition.y;
 
-				DrawTexturePro(texture, textureRectangle, spriteRectangle, origin, readRot * convertToDegrees, colour);
-				//DrawTexture(texture)
+				DrawTexturePro(texture, textureRectangle, spriteRectangle, origin, globalRotation * convertToDegrees, colour);
 			}
 
 
@@ -176,6 +180,8 @@ namespace Project2D
 
 		public virtual void UpdateTransforms()
 		{
+			localTransform = Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rotation) * Matrix3.GetScale(scale);
+
 			if (parent == null)
 			{
 				globalTransform = localTransform;
@@ -195,36 +201,76 @@ namespace Project2D
 			return globalTransform;
 		}
 
-		public void SetGlobalRotation(float rad)
-		{
-			//localTransform = Matrix3.GetTranslation(position) * Matrix3.GetRotateZ(rad - (float)Math.Atan2(parent.GetGlobalTransform().m21, parent.GetGlobalTransform().m11)) * Matrix3.GetScale(scale);
-		}
+		
 
 		public void SetRotation(float rad) 
 		{
-			readRot = rad;
-			UpdateTransforms();
+			rotation = rad;
 		}
 		public void AddRotation(float rad)
 		{
-			localTransform *= Matrix3.GetRotateZ(rad);
-			//readRot += rad;
+			rotation += rad;
 		}
 
 		public void SetPosition(Vector2 pos)
 		{
-			
+			position = pos;
 		}
 		public void AddPosition(Vector2 pos)
 		{
-			Matrix3 translation = Matrix3.Zero;
-			translation.SetTranslation(pos);
-			localTransform += translation;
-			//readPos += pos;
-			
+			position += pos;
 		}
 
+		public Vector2 LocalPosition
+		{
+			get
+			{
+				return position;
+			}
+			set
+			{
+				position = value;
+			}
+		}
 
+		public Vector2 GlobalPosition
+		{
+			get
+			{
+				return globalTransform.GetTranslation();
+			}
+			set
+			{
+				Matrix3 changes = new Matrix3(m31: value.x, m32: value.y);
+				changes = changes * globalTransform.Inverse();
+				changes = new Matrix3(m31: changes.m31, m32: changes.m32);
+				position = (changes).GetTranslation();
+			}
+		}
+
+		public float GlobalRotation
+		{
+			get
+			{
+				return globalTransform.GetZRotation();
+			}
+			set
+			{
+				//value
+			}
+		}
+
+		public float LocalRotation
+		{
+			get
+			{
+				return rotation;
+			}
+			set
+			{
+
+			}
+		}
 
 
 

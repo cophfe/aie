@@ -84,13 +84,12 @@ namespace Project2D
             
             scenes[currentScene].Update(deltaTime); //per frame
             scenes[currentScene].UpdateTransforms();
-            game.AddRotation((float)Math.Cos(currentTime/ 1000.0f)/1000);
-            gameSprite.AddRotation((float)Math.Sin(currentTime/ 1000.0f)/ 1000);
-            game.SetPosition(new Vector2((float)Math.Sin(currentTime / 1000.0f) * 20 + 350, (float)Math.Cos(currentTime / 1000.0f) * 20 + 340));
+            //game.AddRotation((float)Math.Cos(currentTime/ 1000.0f)/1000);
+            //gameSprite.AddRotation((float)Math.Sin(currentTime/ 1000.0f)/ 1000);
+            //game.SetPosition(new Vector2((float)Math.Sin(currentTime / 1000.0f) * 20 + 350, (float)Math.Cos(currentTime / 1000.0f) * 20 + 340));
             playerChild.AddRotation(5 * deltaTime);
-            Vector2 m = GetMousePosition().ToVector2();
-            game.SetPosition(m);
-            DrawCircle((int)m.x, (int)m.y, 5, RLColor.RED);
+            Vector2 m = GetMousePosition();
+            gameSprite.GlobalPosition = m;
             
             //gameSprite.SetRotation((float)Math.Cos(currentTime/ 1000.0f));
             //gameSprite.SetGlobalRotation(0);
@@ -106,10 +105,11 @@ namespace Project2D
             
             
             scenes[currentScene].Draw();
+            Vector2 pos = player.GetGlobalTransform().GetTranslation();
+            Vector2 m = pos + player.GetVelocity();
+            DrawLine((int)m.x, (int)m.y, (int)pos.x, (int)pos.y, RLColor.BLACK);
 
-            
             DrawText(fps.ToString(), 10, 10, 14, RLColor.RED);
-            DrawText($"{player.velocity.Magnitude()}", 10, 30, 14, RLColor.BLACK);
             EndDrawing();
         }
 

@@ -7,6 +7,8 @@ namespace Mlib
 {
 	public struct Matrix3
 	{
+		private static Matrix3 zero = new Matrix3(0, 0, 0, 0, 0, 0, 0, 0, 0);
+		private static Matrix3 identity = new Matrix3(1);
 
 		public float m11, m21, m31,
 						m12, m22, m32,
@@ -31,12 +33,12 @@ namespace Mlib
 
 		public static Matrix3 Identity
 		{
-			get { return new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1); }
+			get { return identity; }
 		}
 
 		public static Matrix3 Zero
 		{
-			get { return new Matrix3(0, 0, 0, 0, 0, 0, 0, 0, 0); }
+			get { return zero; }
 		}
 
 		public static Vector3 operator *(Matrix3 m, Vector3 v)

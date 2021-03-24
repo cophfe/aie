@@ -11,11 +11,13 @@ namespace Project2D
 {
 	class Player : PhysicsObject
 	{
-		const float movementSpeedCap = 200f;
-		const float rotateSpeedCap = 4f;
-		const float movementAcceleration = 2000;
-		const float rotateAcceleration = 10;
+		static float velocityCap = 100f;
+		static float rotateSpeedCap = 4f;
+		static float accelerationCap = 600;
+		static float rotateAcceleration = 10;
+		static float frameAcceleration;
 
+		const float movementFasterAddition = 200f;
 
 		public Player(string fileName, Vector2 position, Vector2 scale, float rotation, Scene scene) : base(fileName, position, scale, null, 0.5f, 3f, 0, 0, scene)
 		{
@@ -23,33 +25,22 @@ namespace Project2D
 		}
 
 		Vector2 inputVelocity;
+		Vector2 inputDirection = Vector2.Zero;
+		bool isMoving = false;
+
 		public override void Update(float deltaTime)
 		{
-
+			isMoving = false;
 			if (IsKeyDown(KeyboardKey.KEY_W))
 			{
-				inputVelocity = (globalTransform.GetForwardVector() * -movementAcceleration * deltaTime);
-				if ((velocity - inputVelocity).MagnitudeSquared() > movementSpeedCap * movementSpeedCap)
-					inputVelocity = (inputVelocity + velocity).Normalised() * movementSpeedCap - velocity;
-				velocity += inputVelocity;
+				inputDirection -= globalTransform.GetForwardVector();
 				
-				//velocity = velocity.Normalised() * movementSpeedCap;
-
-				//clamp
-				//if (velocity.MagnitudeSquared() > movementSpeedCap * movementSpeedCap)
-				//{
-				//	Vector2 d = velocity - velocity.Normalised() * movementSpeedCap;
-
-				//}
-				//else { 
-				//}
+				isMoving = true;
 			}
 			if (IsKeyDown(KeyboardKey.KEY_S))
 			{
-				inputVelocity = (globalTransform.GetForwardVector() * movementAcceleration * deltaTime);
-				if ((velocity - inputVelocity).MagnitudeSquared() > movementSpeedCap * movementSpeedCap)
-					inputVelocity = (inputVelocity + velocity).Normalised() * movementSpeedCap - velocity;
-				velocity += inputVelocity;
+				inputDirection += globalTransform.GetForwardVector();
+				isMoving = true;
 			}
 			if (IsKeyDown(KeyboardKey.KEY_D))
 			{
@@ -63,6 +54,19 @@ namespace Project2D
 					angularVelocity += rotateAcceleration * deltaTime;
 			}
 			
+
+			if (IsKeyPressed(KeyboardKey.KEY_LEFT_SHIFT))
+			{
+				velocity += globalTransform.GetForwardVector() * -1000;
+			}
+
+			
+			inputVelocity = isMoving ? ((inputDirection * accelerationCap * deltaTime + velocity).Normalised() * velocityCap - velocity).Normalised() * accelerationCap * deltaTime : Vector2.Zero;
+			velocity += inputVelocity;
+			
+			//if ((velocity - inputVelocity).MagnitudeSquared() > movementSpeedCap * movementSpeedCap)
+
+
 
 			base.Update(deltaTime);
 		}

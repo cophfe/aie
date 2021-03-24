@@ -15,20 +15,20 @@ namespace Project2D
 		Collider collider = null;
 
 		//protected Vector2 position;
-		public Vector2 velocity;
+		protected Vector2 velocity;
 		protected Vector2 acceleration;
 		protected float angularVelocity;
 		protected float angularDrag;
+		protected float torque;
 
-		protected float restitution;
-		protected float drag = 0f;
+		public float restitution;
+		public float drag = 0f;
 		protected float mass;
-		protected float iMass;
+		public float iMass;
 		protected float inetia;
 		protected float iInetia;
 
-		protected float gravity;
-
+		public float gravity = 0;
 
 		public PhysicsObject(string fileName, Vector2 position, Vector2 scale, Collider collider = null, float drag = 0, float angularDrag = 0, float restitution = 0,  float rotation = 0, GameObject parent = null) : base(fileName, position, scale, rotation, parent)
 		{
@@ -71,10 +71,22 @@ namespace Project2D
 		// ^  ^ Up vector
 		// Right Vector
 
-
-		
-
-
+		public Vector2 GetAcceleration()
+		{
+			return acceleration;
+		}
+		public void AddAcceleration(Vector2 a)
+		{
+			acceleration += a;
+		}
+		public Vector2 GetVelocity()
+		{
+			return velocity;
+		}
+		public void AddVelocity(Vector2 v)
+		{
+			velocity += v;
+		}
 
 		public override void Update(float deltaTime)
 		{

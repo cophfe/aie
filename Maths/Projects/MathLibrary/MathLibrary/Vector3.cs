@@ -6,6 +6,12 @@ namespace Mlib
 {
 	public struct Vector3
 	{
+		private static Vector3 up = new Vector3(1, 0, 0);
+		private static Vector3 right = new Vector3(0, 1, 0);
+		private static Vector3 forward = new Vector3(0, 0, 1);
+		private static Vector3 zero = new Vector3(0, 0, 0);
+		private static Vector3 one = new Vector3(1, 1, 1);
+
 		public float x, y, z;
 
 		public Vector3(float x, float y, float z)
@@ -28,7 +34,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector3(0, 0, 0);
+						return zero;
 					}
 				}
 
@@ -36,7 +42,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector3(1, 1, 1);
+						return one;
 					}
 				}
 
@@ -44,7 +50,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector3(0, 1, 0);
+						return up;
 					}
 				}
 
@@ -52,7 +58,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector3(0, -1, 0);
+						return -1 * up;
 					}
 				}
 
@@ -60,7 +66,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector3(-1, 0, 0);
+						return -1 * right;
 					}
 				}
 
@@ -68,7 +74,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector3(1, 0, 0);
+						return right;
 					}
 				}
 
@@ -76,7 +82,7 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector3(0, 0, 1);
+						return forward;
 					}
 				}
 
@@ -84,10 +90,10 @@ namespace Mlib
 				{
 					get
 					{
-						return new Vector3(0, 0, -1);
+						return -1 * forward;
 					}
 				}
-		#endregion
+			#endregion
 		#endregion
 
 		#region Methods

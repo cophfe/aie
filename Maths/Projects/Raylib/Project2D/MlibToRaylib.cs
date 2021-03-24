@@ -24,7 +24,6 @@ namespace Raylib
 
 		public static implicit operator RLVector2(Vector2 v)
 		{
-			
 			return new RLVector2(v.x, v.y);
 		}
 		
