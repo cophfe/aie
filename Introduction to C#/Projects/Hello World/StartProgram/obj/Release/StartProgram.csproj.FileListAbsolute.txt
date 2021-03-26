@@ -1,7 +1,0 @@
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Hello World\StartProgram\bin\Release\StartProgram.exe.config
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Hello World\StartProgram\bin\Release\StartProgram.exe
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Hello World\StartProgram\bin\Release\StartProgram.pdb
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Hello World\StartProgram\obj\Release\StartProgram.csprojAssemblyReference.cache
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Hello World\StartProgram\obj\Release\StartProgram.csproj.CoreCompileInputs.cache
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Hello World\StartProgram\obj\Release\StartProgram.exe
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Hello World\StartProgram\obj\Release\StartProgram.pdb

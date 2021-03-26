@@ -1,7 +1,0 @@
-C:\Users\cphfe\source\repos\ConsoleList\ConsoleList\bin\Debug\ConsoleList.exe.config
-C:\Users\cphfe\source\repos\ConsoleList\ConsoleList\bin\Debug\ConsoleList.exe
-C:\Users\cphfe\source\repos\ConsoleList\ConsoleList\bin\Debug\ConsoleList.pdb
-C:\Users\cphfe\source\repos\ConsoleList\ConsoleList\obj\Debug\ConsoleList.csprojAssemblyReference.cache
-C:\Users\cphfe\source\repos\ConsoleList\ConsoleList\obj\Debug\ConsoleList.csproj.CoreCompileInputs.cache
-C:\Users\cphfe\source\repos\ConsoleList\ConsoleList\obj\Debug\ConsoleList.exe
-C:\Users\cphfe\source\repos\ConsoleList\ConsoleList\obj\Debug\ConsoleList.pdb

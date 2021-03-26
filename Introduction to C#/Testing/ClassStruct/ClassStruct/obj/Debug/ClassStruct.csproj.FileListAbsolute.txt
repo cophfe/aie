@@ -1,6 +1,0 @@
-C:\Users\s210575\source\repos\ClassStruct\ClassStruct\bin\Debug\ClassStruct.exe.config
-C:\Users\s210575\source\repos\ClassStruct\ClassStruct\bin\Debug\ClassStruct.exe
-C:\Users\s210575\source\repos\ClassStruct\ClassStruct\bin\Debug\ClassStruct.pdb
-C:\Users\s210575\source\repos\ClassStruct\ClassStruct\obj\Debug\ClassStruct.csprojAssemblyReference.cache
-C:\Users\s210575\source\repos\ClassStruct\ClassStruct\obj\Debug\ClassStruct.exe
-C:\Users\s210575\source\repos\ClassStruct\ClassStruct\obj\Debug\ClassStruct.pdb

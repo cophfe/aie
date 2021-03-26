@@ -1,6 +1,0 @@
-D:\AIE Files\Introduction to C#\Variables\Variables\bin\Debug\Variables.exe.config
-D:\AIE Files\Introduction to C#\Variables\Variables\bin\Debug\Variables.exe
-D:\AIE Files\Introduction to C#\Variables\Variables\bin\Debug\Variables.pdb
-D:\AIE Files\Introduction to C#\Variables\Variables\obj\Debug\Variables.csprojAssemblyReference.cache
-D:\AIE Files\Introduction to C#\Variables\Variables\obj\Debug\Variables.exe
-D:\AIE Files\Introduction to C#\Variables\Variables\obj\Debug\Variables.pdb

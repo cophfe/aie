@@ -1,7 +1,0 @@
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Rasteriser\TestGamePleaseIgnore\obj\Release\TestGamePleaseIgnore.csprojAssemblyReference.cache
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Rasteriser\TestGamePleaseIgnore\obj\Release\TestGamePleaseIgnore.csproj.CoreCompileInputs.cache
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Rasteriser\TestGamePleaseIgnore\bin\Release\TestGamePleaseIgnore.exe.config
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Rasteriser\TestGamePleaseIgnore\bin\Release\TestGamePleaseIgnore.exe
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Rasteriser\TestGamePleaseIgnore\bin\Release\TestGamePleaseIgnore.pdb
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Rasteriser\TestGamePleaseIgnore\obj\Release\TestGamePleaseIgnore.exe
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Rasteriser\TestGamePleaseIgnore\obj\Release\TestGamePleaseIgnore.pdb

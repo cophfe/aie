@@ -1,7 +1,0 @@
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Platformer\Arrays and Stuff\bin\Release\Arrays and Stuff.exe.config
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Platformer\Arrays and Stuff\bin\Release\Arrays and Stuff.exe
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Platformer\Arrays and Stuff\bin\Release\Arrays and Stuff.pdb
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Platformer\Arrays and Stuff\obj\Release\Arrays and Stuff.csprojAssemblyReference.cache
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Platformer\Arrays and Stuff\obj\Release\Arrays and Stuff.csproj.CoreCompileInputs.cache
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Platformer\Arrays and Stuff\obj\Release\Arrays and Stuff.exe
-C:\Users\cphfe\Desktop\Work\aie\Introduction to C#\Projects\Platformer\Arrays and Stuff\obj\Release\Arrays and Stuff.pdb
