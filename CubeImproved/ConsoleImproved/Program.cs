@@ -26,22 +26,22 @@ namespace ConsoleImproved
                 //-----------------------------------------------------------
 
                 Console.Clear();
-                Console.CursorVisible = false;
-                {
-                    int height = Console.LargestWindowHeight - 20;
-                    int width = height * 2 * planeWidth / planeHeight;
-                    if (width < Console.LargestWindowHeight)
+                
+               
+                    int height = 200;
+                    int width = 400;
+                    
                         Console.WindowWidth = width; // works on release build, not on debug
-                    else
-                        width = Console.LargestWindowWidth;//wont render properly but whatever lol                    
-                    Console.WindowHeight = height;
-                } 
+                   
+                                       
+                    Console.WindowHeight = height + 1;
+                
                 
 
                 //create a string that holds the value of each pixel on the screen
-                int size = Console.WindowHeight * Console.WindowWidth;
-                xSize = Console.WindowWidth / 2; // (resolution)
-                ySize = Console.WindowHeight;
+                int size = height * width;
+                xSize = width/ 2; // (resolution)
+                ySize = height;
 
                 //controls
                 float turnAmount = MathF.PI / 32;
@@ -129,6 +129,7 @@ namespace ConsoleImproved
 
                 while (rendering)
                 {
+                    Console.CursorVisible = false;
                     screen = new string(' ', size);
                     //setting up a matrix that converts objPoints from the objects local space to world space.
                     Matrix4x4 objectToWorldMatrix = GenerateMatrix(objPos, objRot);
@@ -181,8 +182,8 @@ namespace ConsoleImproved
                         
                     }
 
-                    objRot.Z += 0.05f;
-                    objRot.X += 0.05f;
+                    objRot.Z += 0.02f;
+                    objRot.X += 0.02f;
                     Console.SetCursorPosition(0, 0);
 
                     Console.Write(screen);
